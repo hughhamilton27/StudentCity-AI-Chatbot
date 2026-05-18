@@ -694,25 +694,25 @@
 
     <div class="hero-stats">
       <div>
-        <div class="stat-num">12K+</div>
-        <div class="stat-label">Students booked</div>
+        <div class="stat-num">20K+</div>
+        <div class="stat-label">Students annually</div>
       </div>
       <div>
-        <div class="stat-num">9</div>
+        <div class="stat-num">10</div>
         <div class="stat-label">Dream destinations</div>
       </div>
       <div>
-        <div class="stat-num">24/7</div>
-        <div class="stat-label">Support available</div>
+        <div class="stat-num">30+</div>
+        <div class="stat-label">Years experience</div>
       </div>
     </div>
   </div>
   <div class="hero-visual">
     <div class="dest-cards">
-      <div class="dest-card"><div class="dest-emoji">🏖️</div><div class="dest-name">Cancún, Mexico</div><div class="dest-price">Beach · All-inclusive</div></div>
+      <div class="dest-card"><div class="dest-emoji">🏖️</div><div class="dest-name">Cancún, Mexico</div><div class="dest-price">From $799 · All-inclusive</div></div>
       <div class="dest-card"><div class="dest-emoji">🌴</div><div class="dest-name">Punta Cana</div><div class="dest-price">Caribbean · All-inclusive</div></div>
-      <div class="dest-card"><div class="dest-emoji">🌊</div><div class="dest-name">Nassau</div><div class="dest-price">Bahamas · Beach resort</div></div>
-      <div class="dest-card"><div class="dest-emoji">🐠</div><div class="dest-name">Cabo</div><div class="dest-price">Mexico · Resort stay</div></div>
+      <div class="dest-card"><div class="dest-emoji">🌊</div><div class="dest-name">Nassau</div><div class="dest-price">From $1,199 · Beach resort</div></div>
+      <div class="dest-card"><div class="dest-emoji">🎉</div><div class="dest-name">Panama City Beach</div><div class="dest-price">From $299 · Party central</div></div>
     </div>
   </div>
 </section>
@@ -722,11 +722,11 @@
   <div class="section-label">Where do you want to go?</div>
   <div class="section-title">Top student destinations 🔥</div>
   <div class="dest-grid">
-    <div class="dest-tile"><div class="dest-tile-bg cancun">🏖️</div><div class="dest-tile-overlay"><div class="dest-tile-name">Cancún, Mexico</div><div class="dest-tile-sub">Beach · All-inclusive</div></div></div>
+    <div class="dest-tile"><div class="dest-tile-bg cancun">🏖️</div><div class="dest-tile-overlay"><div class="dest-tile-name">Cancún, Mexico</div><div class="dest-tile-sub">From $799 · All-inclusive</div></div></div>
     <div class="dest-tile"><div class="dest-tile-bg punta">🌴</div><div class="dest-tile-overlay"><div class="dest-tile-name">Punta Cana, DR</div><div class="dest-tile-sub">Caribbean · All-inclusive</div></div></div>
     <div class="dest-tile"><div class="dest-tile-bg cabo">🌵</div><div class="dest-tile-overlay"><div class="dest-tile-name">Cabo, Mexico</div><div class="dest-tile-sub">Pacific coast · Resort</div></div></div>
-    <div class="dest-tile"><div class="dest-tile-bg nassau">🐚</div><div class="dest-tile-overlay"><div class="dest-tile-name">Nassau, Bahamas</div><div class="dest-tile-sub">Island · Beach resort</div></div></div>
-    <div class="dest-tile"><div class="dest-tile-bg pcb">🎉</div><div class="dest-tile-overlay"><div class="dest-tile-name">Panama City Beach</div><div class="dest-tile-sub">Florida · Party central</div></div></div>
+    <div class="dest-tile"><div class="dest-tile-bg nassau">🐚</div><div class="dest-tile-overlay"><div class="dest-tile-name">Nassau, Bahamas</div><div class="dest-tile-sub">From $1,199 · Beach resort</div></div></div>
+    <div class="dest-tile"><div class="dest-tile-bg pcb">🎉</div><div class="dest-tile-overlay"><div class="dest-tile-name">Panama City Beach</div><div class="dest-tile-sub">From $299 · Party central</div></div></div>
     <div class="dest-tile"><div class="dest-tile-bg bimini">⚓</div><div class="dest-tile-overlay"><div class="dest-tile-name">Bimini, Bahamas</div><div class="dest-tile-sub">Island · Escape</div></div></div>
   </div>
 </section>
@@ -793,24 +793,26 @@
   let bookingRef = null;
 
   const destinations = [
-    { emoji: '🏖️', name: 'Cancún, Mexico', sub: 'Beach · All-inclusive', vibe: 'white sand beaches and incredible nightlife' },
-    { emoji: '🌴', name: 'Punta Cana, DR', sub: 'Caribbean · All-inclusive', vibe: 'crystal clear water and laid-back vibes' },
-    { emoji: '🌵', name: 'Cabo, Mexico', sub: 'Pacific coast · Resort', vibe: 'stunning Pacific scenery and great restaurants' },
-    { emoji: '🐚', name: 'Nassau, Bahamas', sub: 'Island · Beach resort', vibe: 'island paradise with amazing snorkelling' },
-    { emoji: '🎉', name: 'Panama City Beach', sub: 'Florida · Party central', vibe: 'non-stop beach parties and warm Gulf waters' },
-    { emoji: '⚓', name: 'Bimini, Bahamas', sub: 'Island · Escape', vibe: 'remote island escape with crystal water' },
-    { emoji: '🌊', name: 'Puerto Vallarta, Mexico', sub: 'Pacific · Resort town', vibe: 'charming cobblestone streets meets beach resort' },
-    { emoji: '🌞', name: 'Fort Lauderdale, US', sub: 'Florida · Classic', vibe: 'classic spring break scene with beautiful beaches' },
-    { emoji: '🏄', name: 'South Padre Island, TX', sub: 'Texas · Beach party', vibe: 'Texas spring break favourite with non-stop fun' },
+    { emoji: '🏖️', name: 'Cancún, Mexico', sub: 'From $799 · All-inclusive', price: 'From $799', vibe: 'white sand beaches, incredible nightlife, and the famous Inception Music Festival with top DJs. Headquarters hotel: Grand Oasis Cancun with the largest pool in Cancun — 1/4 mile long' },
+    { emoji: '🌴', name: 'Punta Cana, DR', sub: 'Caribbean · All-inclusive', price: 'Contact for pricing', vibe: 'crystal clear Caribbean water, all-inclusive resorts, and exclusive StudentCity beach parties with open bars and included transportation' },
+    { emoji: '🌵', name: 'Cabo, Mexico', sub: 'Pacific coast · Resort', price: 'Contact for pricing', vibe: 'stunning Pacific coastline, iconic booze cruises, VIP club access, and amazing restaurants along the waterfront' },
+    { emoji: '🐚', name: 'Nassau, Bahamas', sub: 'From $1,199 · Beach resort', price: 'From $1,199', vibe: 'island paradise with exclusive open-bar events — the only ones of their kind on the island — plus beautiful beaches and roundtrip transfers included' },
+    { emoji: '🎉', name: 'Panama City Beach', sub: 'From $299 · Party central', price: 'From $299', vibe: 'non-stop beach parties, warm Gulf waters, and 5 nights of daily events — Florida\'s ultimate spring break scene' },
+    { emoji: '⚓', name: 'Bimini, Bahamas', sub: 'Island · Escape', price: 'Contact for pricing', vibe: 'a remote island escape with crystal clear water, a relaxed vibe, and stunning natural beauty — perfect for a more laid-back spring break' },
+    { emoji: '🌊', name: 'Puerto Vallarta, Mexico', sub: 'Pacific · Resort town', price: 'Contact for pricing', vibe: 'charming cobblestone streets meet beach resort living, with great food, nightlife, and a more authentic Mexican vibe' },
+    { emoji: '🌞', name: 'Fort Lauderdale, FL', sub: 'Florida · Classic', price: 'Contact for pricing', vibe: 'classic spring break beaches, beachside parties, and premier nightlife in one of Florida\'s most iconic beach cities' },
+    { emoji: '🏄', name: 'South Padre Island, TX', sub: 'Texas · Beach party', price: 'Contact for pricing', vibe: 'Texas\'s favourite spring break destination with non-stop beach fun, warm weather, and a massive student crowd every year' },
+    { emoji: '🌺', name: 'Saint Maarten', sub: 'Caribbean · Island paradise', price: 'Contact for pricing', vibe: 'a stunning dual-nation Caribbean island with beautiful beaches on both the French and Dutch sides, world-class dining, and vibrant nightlife' },
   ];
 
   const supportTopics = [
     { emoji: '📋', label: 'Check my booking', key: 'booking' },
+    { emoji: '💰', label: 'Pricing & packages', key: 'pricing' },
+    { emoji: '🗺️', label: 'Destination info', key: 'destinfo' },
     { emoji: '🛫', label: 'Flight info', key: 'flight' },
     { emoji: '🏨', label: 'Hotel & rooming', key: 'hotel' },
     { emoji: '📄', label: 'Travel documents', key: 'docs' },
     { emoji: '🔄', label: 'Change or cancel', key: 'change' },
-    { emoji: '🗺️', label: 'Destination info', key: 'destinfo' },
     { emoji: '👤', label: 'Speak to a representative', key: 'advisor' },
   ];
 
@@ -827,7 +829,7 @@
 
   function startConversation() {
     showTyping(1200, () => {
-      addBotMsg(`Hey there! 👋 I'm <strong>Sunny</strong>, the StudentCity support assistant.<br><br>I can help with your booking, travel docs, destination questions, and more. What do you need help with today?`);
+      addBotMsg(`Hey there! 👋 I'm <strong>Sunny</strong>, the StudentCity AI assistant.<br><br>StudentCity has been the student travel industry leader for <strong>over 30 years</strong>, sending 20,000+ students to amazing destinations every year. I can help with bookings, travel docs, destination info, and more.<br><br>What do you need help with today?`);
       showSupportTopics();
       conversationStep = 1;
     });
@@ -864,8 +866,17 @@
     if (lower.includes('destination') || lower.includes('cancun') || lower.includes('cabo') || lower.includes('nassau') || lower.includes('punta') || lower.includes('bahamas') || lower.includes('where')) {
       handleTopic('destinfo'); return;
     }
-    if (lower.includes('advisor') || lower.includes('human') || lower.includes('agent') || lower.includes('person') || lower.includes('speak') || lower.includes('call')) {
+    if (lower.includes('advisor') || lower.includes('human') || lower.includes('agent') || lower.includes('person') || lower.includes('speak') || lower.includes('call') || lower.includes('phone')) {
       handleTopic('advisor'); return;
+    }
+    if (lower.includes('price') || lower.includes('cost') || lower.includes('how much') || lower.includes('cheap') || lower.includes('budget') || lower.includes('afford')) {
+      handleTopic('pricing'); return;
+    }
+    if (lower.includes('insurance') || lower.includes('coverage') || lower.includes('protect')) {
+      handleTopic('insurance'); return;
+    }
+    if (lower.includes('luggage') || lower.includes('baggage') || lower.includes('bag') || lower.includes('suitcase')) {
+      handleTopic('baggage'); return;
     }
 
     // Step-based flows
@@ -908,25 +919,34 @@
       showTyping(1100, () => addBotMsg(`Sure, I can pull up your booking! 📋<br><br>Do you have your <strong>booking reference number</strong>? It's in your confirmation email (e.g. SC-28471).`, ['I have it', "I don't have it"]));
     } else if (key === 'flight') {
       conversationStep = 1;
-      showTyping(1200, () => addBotMsg(`✈️ For flight information, here's what you need to know:<br><br>• Your flight details are in your <strong>confirmation email</strong> from StudentCity<br>• Check-in opens <strong>24–48 hours</strong> before departure on your airline's app<br>• Arrive at the airport at least <strong>3 hours early</strong> for international flights<br><br>Need help finding your confirmation or have a specific flight question?`, ['Find my confirmation', 'Baggage allowance', 'Speak to a representative']));
+      showTyping(1200, () => addBotMsg(`✈️ Here's what you need to know about flights:<br><br>• Flight details are posted to your <strong>online account no later than 3 weeks before departure</strong> — nothing is mailed<br>• StudentCity uses airlines including <strong>American, United, JetBlue, Delta, Spirit</strong>, and private charters<br>• <strong>Direct flights are not guaranteed</strong> (non-stop options may be available for an extra fee)<br>• Arrive at least <strong>3 hours early</strong> for international flights<br>• <strong>Checked luggage is NOT included</strong> in your package — you pay the airline directly at check-in<br>• Frequent flyer miles cannot be used on StudentCity bookings<br><br>Missing your confirmation or have another question?`, ['Find my confirmation', 'Baggage fees', 'Speak to a representative']));
     } else if (key === 'hotel') {
       conversationStep = 1;
-      showTyping(1300, () => addBotMsg(`🏨 Here's your hotel & rooming info:<br><br>• Your hotel assignment is in your booking confirmation<br>• Room requests (e.g. roommate changes) must be submitted <strong>14 days before travel</strong><br>• Check-in is typically <strong>3pm local time</strong>, check-out at <strong>11am</strong><br>• Early check-in can be requested but isn't guaranteed<br><br>Need to change your room or roommate?`, ['Change roommate', 'Early check-in request', 'Speak to a representative']));
+      showTyping(1300, () => addBotMsg(`🏨 Here's your hotel & rooming info:<br><br>• Your hotel assignment is in your <strong>booking confirmation</strong><br>• <strong>Random travelers will never be placed in your room</strong> without your explicit permission<br>• Most hotels require a <strong>refundable security deposit of $50–$150 per person</strong> at check-in (cash or card depending on property)<br>• Check-in is typically <strong>3pm local time</strong>, check-out at <strong>11am</strong><br>• Room requests (e.g. roommate changes) should be made as early as possible — contact your representative<br><br>Need to change your roommate or have another hotel question?`, ['Change roommate', 'Security deposit info', 'Speak to a representative']));
     } else if (key === 'docs') {
       conversationStep = 1;
-      showTyping(1400, () => addBotMsg(`📄 Travel document requirements:<br><br><strong>For Mexico (Cancún, Cabo, Puerto Vallarta):</strong><br>✅ Valid US passport (6 months validity)<br>✅ Tourist card (FMM) — provided on your flight<br><br><strong>For Dominican Republic (Punta Cana):</strong><br>✅ Valid US passport<br>✅ E-ticket (included in your package)<br><br><strong>For Bahamas (Nassau, Bimini):</strong><br>✅ Valid US passport or passport card<br><br>All documents should be valid for <strong>6 months beyond</strong> your travel date.`, ['My passport expires soon', 'Other destination docs', 'Speak to a representative']));
+      showTyping(1400, () => addBotMsg(`📄 Travel document requirements:<br><br><strong>For Mexico (Cancún, Cabo, Puerto Vallarta):</strong><br>✅ Valid US passport (6+ months validity beyond travel date)<br>✅ Tourist card (FMM) — provided on your flight<br><br><strong>For Dominican Republic (Punta Cana):</strong><br>✅ Valid US passport<br>✅ E-ticket — included in your package<br><br><strong>For Bahamas (Nassau, Bimini, Saint Maarten):</strong><br>✅ Valid US passport or US passport card<br><br>📌 Your travel documents will be available to <strong>print from your online account 5–14 days before departure</strong>. Nothing is mailed.<br><br>Non-US citizens must contact their local consulate for entry requirements.`, ['My passport expires soon', 'Non-US citizen docs', 'Speak to a representative']));
     } else if (key === 'change') {
       conversationStep = 1;
-      showTyping(1300, () => addBotMsg(`🔄 Changes & cancellations — here's our policy:<br><br>• <strong>Name changes:</strong> Allowed up to 30 days before travel (fee may apply)<br>• <strong>Date changes:</strong> Subject to availability, contact a representative<br>• <strong>Cancellations 60+ days out:</strong> Deposit retained, balance refunded<br>• <strong>Cancellations under 60 days:</strong> No refund — travel insurance recommended<br><br>Want to start a change or cancellation request?`, ['Start a change request', 'Start a cancellation', 'Speak to a representative']));
+      showTyping(1300, () => addBotMsg(`🔄 Changes & cancellations — StudentCity's official policy:<br><br>• <strong>Deposits are non-refundable</strong> regardless of when you cancel<br>• <strong>Name/hotel/destination changes:</strong> Free before deposit; minimum <strong>$35 fee per person</strong> after deposit<br>• If flights have been issued, airline restrictions may also apply to name changes<br>• <strong>Cancellations:</strong> Fees increase the closer to your departure date — contact us for your specific situation<br>• <strong>Reservations can be transferred</strong> to another traveler (free before deposit, $35+ after)<br>• <strong>Travel insurance</strong> is strongly recommended — it can cover cancellations if your trip is paid in full<br><br>Want to start a request or speak to someone?`, ['Start a change request', 'Travel insurance info', 'Speak to a representative']));
     } else if (key === 'destinfo') {
       conversationStep = 'destinfo_pick';
       showTyping(1100, () => {
         addBotMsg(`🗺️ Which destination do you want to know more about?`);
         showDestinationList();
       });
+    } else if (key === 'pricing') {
+      conversationStep = 1;
+      showTyping(1200, () => addBotMsg(`💰 Here's a quick breakdown of StudentCity's starting prices:<br><br>🎉 <strong>Panama City Beach:</strong> From $299 (5 nights)<br>🏖️ <strong>Cancún, Mexico:</strong> From $799 (all-inclusive, 5 nights)<br>🐚 <strong>Nassau, Bahamas:</strong> From $1,199 (4 nights, roundtrip transfers included)<br>🌴 <strong>Punta Cana, DR:</strong> All-inclusive packages — contact for pricing<br>🌵 <strong>Cabo, Mexico:</strong> Contact for pricing<br>🌺 <strong>Saint Maarten:</strong> Contact for pricing<br><br>Prices vary by hotel, room type, number of travellers, and travel dates. For an exact quote speak to a representative!`, ['Get a quote', 'What\'s included', 'Speak to a representative']));
+    } else if (key === 'insurance') {
+      conversationStep = 1;
+      showTyping(1100, () => addBotMsg(`🛡️ StudentCity strongly recommends <strong>Comprehensive Travel Insurance</strong>.<br><br>It can cover:<br>• Medical expenses abroad<br>• Trip cancellation (if your trip is paid in full)<br>• Trip delays<br>• Baggage delay or loss<br><br>Coverage becomes active only after <strong>full trip payment</strong>. Given that deposits are non-refundable, insurance is especially valuable if your plans might change.<br><br>Ask a representative about adding insurance to your booking.`, ['Add insurance', 'Speak to a representative']));
+    } else if (key === 'baggage') {
+      conversationStep = 1;
+      showTyping(1000, () => addBotMsg(`🧳 Important baggage info:<br><br>• <strong>Checked luggage is NOT included</strong> in your StudentCity package<br>• You pay baggage fees directly to your airline at check-in — fees vary by carrier<br>• Check your airline's specific policy before you travel<br>• Carry-on policies also vary by airline<br><br>StudentCity uses airlines including American, United, JetBlue, Delta, Spirit, and private charters — check your confirmation for your specific airline.`, ['Flight info', 'Speak to a representative']));
     } else if (key === 'advisor') {
       conversationStep = 'collect_name';
-      showTyping(1000, () => addBotMsg(`No problem — I'll connect you with a StudentCity representative right away! 🙋<br><br>First, what's your name?`));
+      showTyping(1000, () => addBotMsg(`No problem — I'll connect you with a StudentCity representative! 🙋<br><br>You can also reach us directly:<br>📞 <strong>1-888-777-4642</strong> (free call)<br><br>Or fill in your details below and we'll have someone follow up with you. First, what's your name?`));
     }
   }
 
@@ -995,7 +1015,7 @@
   function showDestinationInfo(dest) {
     conversationStep = 1;
     showTyping(1300, () => {
-      addBotMsg(`${dest.emoji} <strong>${dest.name}</strong> is known for ${dest.vibe}.<br><br>Here's a quick overview:<br><br>🌡️ <strong>Weather:</strong> Warm and sunny, typically 28–34°C during spring break<br>🕐 <strong>Time zone:</strong> Check your confirmation for local time<br>🏥 <strong>Health:</strong> No vaccines required for US citizens, but travel insurance is strongly recommended<br>💊 <strong>Water:</strong> Drink bottled water only (applies to Mexico & DR)<br>📱 <strong>Mobile:</strong> Check international roaming with your carrier before you go<br><br>Want to know anything more specific?`, ['Travel documents needed', 'What to pack', 'Speak to a representative']);
+      addBotMsg(`${dest.emoji} <strong>${dest.name}</strong> — ${dest.vibe}.<br><br>📋 <strong>Quick overview:</strong><br><br>💰 <strong>Price:</strong> ${dest.price}<br>🌡️ <strong>Weather:</strong> Warm and sunny, typically 28–34°C during spring break<br>🏥 <strong>Vaccinations:</strong> None required for US citizens (per CDC guidance)<br>💊 <strong>Water:</strong> Drink bottled water only (Mexico & DR)<br>📱 <strong>Mobile:</strong> Check international roaming with your carrier<br>🎒 <strong>Luggage:</strong> Checked bags are NOT included — pay your airline directly<br>🛂 <strong>Passport:</strong> Required for all international destinations (6+ months validity)<br><br>Want to know more or get a quote?`, ['Travel documents needed', 'What\'s included', 'Get a quote', 'Speak to a representative']);
     });
   }
 
