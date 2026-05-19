@@ -795,16 +795,76 @@
   let repOffered = false;
 
   const destinations = [
-    { emoji: '🏖️', name: 'Cancún, Mexico', sub: 'From $799 · All-inclusive', price: 'From $799', vibe: 'white sand beaches, incredible nightlife, and the famous Inception Music Festival with top DJs. Headquarters hotel: Grand Oasis Cancun with the largest pool in Cancun — 1/4 mile long' },
-    { emoji: '🌴', name: 'Punta Cana, DR', sub: 'Caribbean · All-inclusive', price: 'Contact for pricing', vibe: 'crystal clear Caribbean water, all-inclusive resorts, and exclusive StudentCity beach parties with open bars and included transportation' },
-    { emoji: '🌵', name: 'Cabo, Mexico', sub: 'Pacific coast · Resort', price: 'Contact for pricing', vibe: 'stunning Pacific coastline, iconic booze cruises, VIP club access, and amazing restaurants along the waterfront' },
-    { emoji: '🐚', name: 'Nassau, Bahamas', sub: 'From $1,199 · Beach resort', price: 'From $1,199', vibe: 'island paradise with exclusive open-bar events — the only ones of their kind on the island — plus beautiful beaches and roundtrip transfers included' },
-    { emoji: '🎉', name: 'Panama City Beach', sub: 'From $299 · Party central', price: 'From $299', vibe: 'non-stop beach parties, warm Gulf waters, and 5 nights of daily events — Florida\'s ultimate spring break scene' },
-    { emoji: '⚓', name: 'Bimini, Bahamas', sub: 'Island · Escape', price: 'Contact for pricing', vibe: 'a remote island escape with crystal clear water, a relaxed vibe, and stunning natural beauty — perfect for a more laid-back spring break' },
-    { emoji: '🌊', name: 'Puerto Vallarta, Mexico', sub: 'Pacific · Resort town', price: 'Contact for pricing', vibe: 'charming cobblestone streets meet beach resort living, with great food, nightlife, and a more authentic Mexican vibe' },
-    { emoji: '🌞', name: 'Fort Lauderdale, FL', sub: 'Florida · Classic', price: 'Contact for pricing', vibe: 'classic spring break beaches, beachside parties, and premier nightlife in one of Florida\'s most iconic beach cities' },
-    { emoji: '🏄', name: 'South Padre Island, TX', sub: 'Texas · Beach party', price: 'Contact for pricing', vibe: 'Texas\'s favourite spring break destination with non-stop beach fun, warm weather, and a massive student crowd every year' },
-    { emoji: '🌺', name: 'Saint Maarten', sub: 'Caribbean · Island paradise', price: 'Contact for pricing', vibe: 'a stunning dual-nation Caribbean island with beautiful beaches on both the French and Dutch sides, world-class dining, and vibrant nightlife' },
+    {
+      emoji: '🏖️', name: 'Cancún, Mexico', sub: 'From $799 · All-inclusive', price: 'From $799',
+      hotel: 'Grand Oasis Cancun (HQ) — largest pool in Cancun, 1/4 mile long',
+      tiers: '🏨 <strong>Package tiers:</strong><br>• Deluxe Room — <strong>$799</strong><br>• Super Deluxe — <strong>$999</strong><br>• Super Duper — <strong>$1,179</strong>',
+      included: 'All-inclusive (food & drinks), roundtrip airport transfers, daily pool & beach parties, Inception Music Festival, 24/7 onsite team',
+      vibe: 'white sand beaches, incredible nightlife, and the Inception Music Festival with headline DJs. Headquarters hotel is the Grand Oasis Cancun with the largest pool in Cancun — 1/4 mile long'
+    },
+    {
+      emoji: '🌴', name: 'Punta Cana, DR', sub: 'Custom quote · All-inclusive', price: 'Custom quote — call 1-888-777-4642',
+      hotel: 'Occidental Caribe (HQ) — large pool, beachfront, all-inclusive',
+      tiers: 'Pricing is customised based on travel dates and group size.',
+      included: 'All-inclusive (food & drinks), roundtrip airport transfers, daily beach parties with StudentCity DJs, 24/7 onsite team',
+      vibe: 'crystal clear Caribbean water, all-inclusive resorts, and exclusive StudentCity beach parties with open bars and included transportation'
+    },
+    {
+      emoji: '🌵', name: 'Cabo, Mexico', sub: 'Custom quote · All-inclusive', price: 'Custom quote — call 1-888-777-4642',
+      hotel: 'Pueblo Bonito Rose (HQ) — all-suite beachfront, views of the famous arches, 24/7 all-inclusive',
+      tiers: 'Pricing is customised based on travel dates and group size.',
+      included: 'All-inclusive (food & drinks), roundtrip airport transfers, booze cruises, VIP club access, 24/7 onsite team',
+      vibe: 'stunning Pacific coastline, iconic booze cruises, VIP club access, and amazing restaurants — all from the all-suite Pueblo Bonito Rose resort'
+    },
+    {
+      emoji: '🐚', name: 'Nassau, Bahamas', sub: 'From $1,199 · All-inclusive', price: 'From $1,199',
+      hotel: 'Breezes Bahamas Resort (HQ) — all-inclusive, beachfront',
+      tiers: 'Pricing is customised based on travel dates and group size. Platinum upgrades include Private Island day parties.',
+      included: 'All-inclusive (food & drinks), roundtrip airport transfers, open-bar party passes, Private Island day party (Platinum), 24/7 onsite team',
+      vibe: 'island paradise with exclusive open-bar events, Private Island day parties, and beautiful beaches — all from the all-inclusive Breezes Bahamas Resort'
+    },
+    {
+      emoji: '🎉', name: 'Panama City Beach', sub: 'From $299 · Party central', price: 'From $299',
+      hotel: 'SpringHill Suites by Marriott (HQ) — Gulf Coast views, modern suites',
+      tiers: 'Pricing is customised based on travel dates and group size. Note: US destinations are not all-inclusive.',
+      included: 'Hotel accommodation, exclusive Welcome Dinner (Sunday, 120 min open buffet & drinks), VIP Party Card (free entry & special rates at events all week), optional motorcoach transport, 24/7 onsite team',
+      vibe: 'non-stop Gulf Coast beach parties, the Beach Bash Music Fest, and a Welcome Dinner on arrival — Florida\'s biggest spring break destination. Note: not all-inclusive, meals purchased separately'
+    },
+    {
+      emoji: '⚓', name: 'Bimini, Bahamas', sub: 'Custom quote · Island escape', price: 'Custom quote — call 1-888-777-4642',
+      hotel: 'Contact StudentCity for current headquarters hotel',
+      tiers: 'Pricing is customised based on travel dates and group size.',
+      included: 'Hotel accommodation, roundtrip transfers, island events, 24/7 onsite team',
+      vibe: 'a remote island escape with crystal clear water, a relaxed vibe, and stunning natural beauty — perfect for a more laid-back spring break'
+    },
+    {
+      emoji: '🌊', name: 'Puerto Vallarta, Mexico', sub: 'Custom quote · All-inclusive', price: 'Custom quote — call 1-888-777-4642',
+      hotel: 'Contact StudentCity for current headquarters hotel',
+      tiers: 'Pricing is customised based on travel dates and group size.',
+      included: 'All-inclusive (food & drinks), roundtrip airport transfers, daily events, 24/7 onsite team',
+      vibe: 'charming cobblestone streets meet beach resort living, with great food, nightlife, and an authentic Mexican vibe'
+    },
+    {
+      emoji: '🌞', name: 'Fort Lauderdale, FL', sub: 'Custom quote · Florida classic', price: 'Custom quote — call 1-888-777-4642',
+      hotel: 'Contact StudentCity for current headquarters hotel',
+      tiers: 'Pricing is customised based on travel dates and group size. Note: US destinations are not all-inclusive.',
+      included: 'Hotel accommodation, beachside parties, VIP event access, 24/7 onsite team',
+      vibe: 'classic spring break beaches, beachside parties, and premier nightlife in one of Florida\'s most iconic beach cities'
+    },
+    {
+      emoji: '🏄', name: 'South Padre Island, TX', sub: 'Custom quote · Beach party', price: 'Custom quote — call 1-888-777-4642',
+      hotel: 'The Inn at South Padre / Isla Grand Beach Resort',
+      tiers: 'Pricing is customised based on travel dates and group size. Note: US destinations are not all-inclusive.',
+      included: 'Hotel accommodation, exclusive Welcome Party, Padremaniac Party Card (VIP club access all week), 3 meal vouchers, optional motorcoach transport, 24/7 onsite team',
+      vibe: 'Texas\'s favourite spring break with the Padremaniac Party Card for VIP club access, a Welcome Party, meal vouchers, and 33 miles of beautiful shoreline'
+    },
+    {
+      emoji: '🌺', name: 'Saint Maarten', sub: 'Custom quote · Caribbean island', price: 'Custom quote — call 1-888-777-4642',
+      hotel: 'Contact StudentCity for current headquarters hotel',
+      tiers: 'Pricing is customised based on travel dates and group size.',
+      included: 'Hotel accommodation, roundtrip transfers, island events, 24/7 onsite team',
+      vibe: 'a stunning dual-nation Caribbean island with beautiful beaches on both the French and Dutch sides, world-class dining, and vibrant nightlife'
+    },
   ];
 
   const supportTopics = [
@@ -973,7 +1033,7 @@
       });
     } else if (key === 'pricing') {
       conversationStep = 1;
-      showTyping(1200, () => addBotMsg(`💰 Here's a quick breakdown of StudentCity's starting prices:<br><br>🎉 <strong>Panama City Beach:</strong> From $299 (5 nights)<br>🏖️ <strong>Cancún, Mexico:</strong> From $799 (all-inclusive, 5 nights)<br>🐚 <strong>Nassau, Bahamas:</strong> From $1,199 (4 nights, roundtrip transfers included)<br>🌴 <strong>Punta Cana, DR:</strong> All-inclusive packages — contact for pricing<br>🌵 <strong>Cabo, Mexico:</strong> Contact for pricing<br>🌺 <strong>Saint Maarten:</strong> Contact for pricing<br><br>Prices vary by hotel, room type, number of travellers, and travel dates. Do you have a specific destination or budget in mind?`, ['Get a quote', 'What\'s included', 'Tell me about destinations']));
+      showTyping(1200, () => addBotMsg(`💰 Here's a breakdown of StudentCity's pricing:<br><br><strong>Published prices:</strong><br>🏖️ <strong>Cancún:</strong> $799 Deluxe · $999 Super Deluxe · $1,179 Super Duper (all-inclusive)<br>🎉 <strong>Panama City Beach:</strong> From $299 (hotel + party card, not all-inclusive)<br>🐚 <strong>Nassau:</strong> From $1,199 (all-inclusive + open-bar party passes)<br><br><strong>Custom quote destinations:</strong><br>🌴 Punta Cana · 🌵 Cabo · 🌊 Puerto Vallarta · 🌞 Fort Lauderdale · 🏄 South Padre Island · ⚓ Bimini · 🌺 Saint Maarten<br><br>For a custom quote call <strong>1-888-777-4642</strong> or ask below and I can tell you what's included at any destination.`, ['Cancún packages', 'Panama City Beach', 'Nassau packages', 'Something else']));
     } else if (key === 'insurance') {
       conversationStep = 1;
       showTyping(1100, () => addBotMsg(`🛡️ StudentCity strongly recommends <strong>Comprehensive Travel Insurance</strong>.<br><br>It can cover:<br>• Medical expenses abroad<br>• Trip cancellation (if your trip is paid in full)<br>• Trip delays<br>• Baggage delay or loss<br><br>Coverage becomes active only after <strong>full trip payment</strong>. Given that deposits are non-refundable, insurance is especially valuable if your plans might change.<br><br>Is there anything else I can help you with?`, ['Add insurance', 'Cancellation policy', 'Something else']));
@@ -1051,7 +1111,7 @@
   function showDestinationInfo(dest) {
     conversationStep = 1;
     showTyping(1300, () => {
-      addBotMsg(`${dest.emoji} <strong>${dest.name}</strong> — ${dest.vibe}.<br><br>📋 <strong>Quick overview:</strong><br><br>💰 <strong>Price:</strong> ${dest.price}<br>🌡️ <strong>Weather:</strong> Warm and sunny, typically 28–34°C during spring break<br>🏥 <strong>Vaccinations:</strong> None required for US citizens (per CDC guidance)<br>💊 <strong>Water:</strong> Drink bottled water only (Mexico & DR)<br>📱 <strong>Mobile:</strong> Check international roaming with your carrier<br>🎒 <strong>Luggage:</strong> Checked bags are NOT included — pay your airline directly<br>🛂 <strong>Passport:</strong> Required for all international destinations (6+ months validity)<br><br>Want to know more or have another question?`, ['Travel documents needed', 'What\'s included', 'Get a quote', 'Something else']);
+      addBotMsg(`${dest.emoji} <strong>${dest.name}</strong><br><br>${dest.tiers}<br><br>🏨 <strong>Hotel:</strong> ${dest.hotel}<br>✅ <strong>Included:</strong> ${dest.included}<br><br>🌡️ Warm & sunny during spring break · 🛂 Passport required for international destinations · 🎒 Checked luggage NOT included in package price<br><br>Want to know more?`, ['Travel documents', 'What\'s included', 'Something else']);
     });
   }
 
