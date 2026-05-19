@@ -921,7 +921,8 @@
       return;
     }
     if (conversationStep === 'collect_name') {
-      userName = text.split(' ')[0];
+      const namePhrases = /^(?:my name is|i'm|i am|it's|its|this is|call me)\s+/i;
+      userName = text.replace(namePhrases, '').split(' ')[0];
       conversationStep = 'collect_email';
       showTyping(900, () => addBotMsg(`Thanks ${userName}! 👋 What's your student email so our representative can follow up?`));
       return;
