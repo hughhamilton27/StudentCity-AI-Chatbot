@@ -957,8 +957,18 @@
     if (lower.includes('cancel') || lower.includes('change') || lower.includes('refund') || lower.includes('reschedule')) {
       handleTopic('change'); checkRepOffer(); return;
     }
-    if (lower.includes('destination') || lower.includes('cancun') || lower.includes('cabo') || lower.includes('nassau') || lower.includes('punta') || lower.includes('bahamas') || lower.includes('where')) {
-      handleTopic('destinfo'); checkRepOffer(); return;
+    if (lower.includes('destination') || lower.includes('cancun') || lower.includes('cabo') || lower.includes('nassau') || lower.includes('punta') || lower.includes('bahamas') || lower.includes('panama') || lower.includes('bimini') || lower.includes('vallarta') || lower.includes('lauderdale') || lower.includes('padre') || lower.includes('maarten') || lower.includes('where')) {
+      const destMatch = destinations.find(d =>
+        lower.includes(d.name.toLowerCase().split(',')[0].toLowerCase()) ||
+        lower.includes(d.name.toLowerCase().split(' ')[0].toLowerCase())
+      );
+      if (destMatch) {
+        conversationStep = 1;
+        showTyping(1100, () => showDestinationInfo(destMatch));
+      } else {
+        handleTopic('destinfo');
+      }
+      checkRepOffer(); return;
     }
     if (lower.includes('advisor') || lower.includes('human') || lower.includes('agent') || lower.includes('person') || lower.includes('speak') || lower.includes('call') || lower.includes('phone') || lower.includes('representative')) {
       handleTopic('advisor'); return;
