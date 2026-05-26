@@ -965,20 +965,30 @@
   <div class="chat-footer-note">AI-powered support · <a href="#" onclick="startVapiCall();return false;" style="color:var(--ocean);font-weight:600;text-decoration:none;">📞 1-888-777-4642</a> · Talk to Sunny by voice</div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@vapi-ai/web/dist/vapi.umd.cjs"></script>
 <script>
   const VAPI_PUBLIC_KEY = '4ce8ff8c-88b1-4c5d-8687-a12014cc63f2';
   const VAPI_ASSISTANT_ID = '00db4fb5-cc25-4aa0-81f1-70405b026138';
   let vapiInstance = null;
 
-  function startVapiCall() {
+  async function getVapi() {
     if (!vapiInstance) {
+      const { default: Vapi } = await import('https://cdn.jsdelivr.net/npm/@vapi-ai/web/+esm');
       vapiInstance = new Vapi(VAPI_PUBLIC_KEY);
     }
-    vapiInstance.start(VAPI_ASSISTANT_ID);
-    document.getElementById('vapiOverlay').classList.add('active');
-    document.getElementById('navPhone').classList.add('calling');
-    document.getElementById('navPhone').textContent = '🔴 On call...';
+    return vapiInstance;
+  }
+
+  async function startVapiCall() {
+    try {
+      const vapi = await getVapi();
+      await vapi.start(VAPI_ASSISTANT_ID);
+      document.getElementById('vapiOverlay').classList.add('active');
+      document.getElementById('navPhone').classList.add('calling');
+      document.getElementById('navPhone').innerHTML = '🔴 On call...';
+    } catch (e) {
+      alert('Could not start call. Please allow microphone access and try again.');
+      console.error(e);
+    }
   }
 
   function endVapiCall() {
