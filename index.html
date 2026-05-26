@@ -71,6 +71,87 @@
     transition: transform 0.15s;
   }
   .nav-cta:hover { transform: scale(1.04); }
+  .nav-phone {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: rgba(255,255,255,0.85);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 8px 16px;
+    border-radius: 50px;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+  .nav-phone:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.4); color: white; }
+  .nav-phone.calling { background: var(--coral); border-color: var(--coral); color: white; animation: pulse-phone 1.5s infinite; }
+  @keyframes pulse-phone { 0%,100%{opacity:1} 50%{opacity:0.75} }
+  .vapi-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10,22,40,0.7);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+  }
+  .vapi-overlay.active { opacity: 1; pointer-events: all; }
+  .vapi-modal {
+    background: white;
+    border-radius: 24px;
+    padding: 36px 32px;
+    text-align: center;
+    max-width: 320px;
+    width: 90%;
+    box-shadow: 0 20px 80px rgba(0,0,0,0.3);
+  }
+  .vapi-pulse {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--ocean), var(--deep));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 32px;
+    position: relative;
+  }
+  .vapi-pulse::before, .vapi-pulse::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid var(--ocean);
+    animation: ripple 2s infinite;
+  }
+  .vapi-pulse::before { width: 100px; height: 100px; animation-delay: 0s; }
+  .vapi-pulse::after { width: 120px; height: 120px; animation-delay: 0.4s; }
+  @keyframes ripple { 0%{opacity:0.6;transform:scale(1)} 100%{opacity:0;transform:scale(1.4)} }
+  .vapi-modal h3 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--deep);
+    margin-bottom: 6px;
+  }
+  .vapi-modal p { font-size: 14px; color: var(--muted); margin-bottom: 24px; line-height: 1.5; }
+  .vapi-end {
+    background: var(--coral);
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  .vapi-end:hover { opacity: 0.85; }
 
   /* ---- HERO ---- */
   .hero {
@@ -578,10 +659,15 @@
     padding: 14px 16px;
     border-top: 1px solid #F1F5F9;
     display: flex;
-    gap: 10px;
-    align-items: center;
+    flex-direction: column;
+    gap: 8px;
     flex-shrink: 0;
     background: white;
+  }
+  .chat-input-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
   }
   .chat-input {
     flex: 1;
@@ -596,6 +682,20 @@
   }
   .chat-input:focus { border-color: var(--ocean); }
   .chat-input::placeholder { color: #94A3B8; }
+  .chat-attach {
+    width: 40px; height: 40px;
+    background: #F1F5F9;
+    border: none;
+    border-radius: 50%;
+    color: var(--muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s, color 0.15s;
+    flex-shrink: 0;
+  }
+  .chat-attach:hover { background: #E2E8F0; color: var(--deep); }
   .chat-send {
     width: 40px; height: 40px;
     background: var(--deep);
@@ -610,6 +710,61 @@
     flex-shrink: 0;
   }
   .chat-send:hover { background: var(--ocean); transform: scale(1.05); }
+  .attach-preview {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #F1F5F9;
+    border-radius: 10px;
+    padding: 8px 12px;
+    font-size: 12px;
+    color: var(--text);
+  }
+  .attach-preview img {
+    width: 40px; height: 40px;
+    border-radius: 6px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  .attach-preview-name {
+    flex: 1;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+  }
+  .attach-remove {
+    background: none;
+    border: none;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0 2px;
+    line-height: 1;
+  }
+  .attach-remove:hover { color: var(--coral); }
+  .msg-attachment {
+    margin-top: 6px;
+    max-width: 200px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .msg-attachment img {
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+  }
+  .msg-attachment-file {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 10px;
+    padding: 8px 10px;
+    font-size: 12px;
+    color: white;
+  }
   .chat-footer-note { font-size: 10px; color: var(--muted); text-align: center; padding: 0 16px 10px; }
 
   /* Demo label */
@@ -682,8 +837,23 @@
     <a href="#">Deals</a>
     <a href="#">About</a>
   </div>
-  <button class="nav-cta">Book Now</button>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <a class="nav-phone" id="navPhone" onclick="startVapiCall()">
+      📞 1-888-777-4642
+    </a>
+    <button class="nav-cta">Book Now</button>
+  </div>
 </nav>
+
+<!-- Vapi call overlay -->
+<div class="vapi-overlay" id="vapiOverlay">
+  <div class="vapi-modal">
+    <div class="vapi-pulse">☀️</div>
+    <h3>Sunny is listening</h3>
+    <p>You're connected to StudentCity's AI voice assistant. Ask anything about bookings, destinations, or travel info.</p>
+    <button class="vapi-end" onclick="endVapiCall()">End Call</button>
+  </div>
+</div>
 
 <!-- Hero -->
 <section class="hero">
@@ -775,15 +945,50 @@
   <div class="hs-badge" id="hsBadge">🟠 HubSpot — Lead captured in CRM pipeline</div>
   <div class="chat-messages" id="chatMessages"></div>
   <div class="chat-input-area">
-    <input type="text" class="chat-input" id="chatInput" placeholder="Ask Sunny anything..." onkeydown="if(event.key==='Enter') sendUserMsg()" />
-    <button class="chat-send" onclick="sendUserMsg()">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-    </button>
+    <div id="attachPreview" style="display:none" class="attach-preview">
+      <img id="attachThumb" src="" alt="" style="display:none" />
+      <span id="attachIcon" style="font-size:20px;display:none">📄</span>
+      <span class="attach-preview-name" id="attachName"></span>
+      <button class="attach-remove" onclick="removeAttachment()" title="Remove">✕</button>
+    </div>
+    <div class="chat-input-row">
+      <input type="file" id="fileInput" accept="image/*,.pdf,.doc,.docx,.txt" style="display:none" onchange="handleFileSelect(this)" />
+      <button class="chat-attach" onclick="document.getElementById('fileInput').click()" title="Attach file or image">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+      </button>
+      <input type="text" class="chat-input" id="chatInput" placeholder="Ask Sunny anything..." onkeydown="if(event.key==='Enter') sendUserMsg()" />
+      <button class="chat-send" onclick="sendUserMsg()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </div>
   </div>
-  <div class="chat-footer-note">AI-powered support · For urgent help call your StudentCity representative directly.</div>
+  <div class="chat-footer-note">AI-powered support · <a href="#" onclick="startVapiCall();return false;" style="color:var(--ocean);font-weight:600;text-decoration:none;">📞 1-888-777-4642</a> · Talk to Sunny by voice</div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@vapi-ai/web/dist/vapi.umd.cjs"></script>
 <script>
+  const VAPI_PUBLIC_KEY = '4ce8ff8c-88b1-4c5d-8687-a12014cc63f2';
+  const VAPI_ASSISTANT_ID = '00db4fb5-cc25-4aa0-81f1-70405b026138';
+  let vapiInstance = null;
+
+  function startVapiCall() {
+    if (!vapiInstance) {
+      vapiInstance = new Vapi(VAPI_PUBLIC_KEY);
+    }
+    vapiInstance.start(VAPI_ASSISTANT_ID);
+    document.getElementById('vapiOverlay').classList.add('active');
+    document.getElementById('navPhone').classList.add('calling');
+    document.getElementById('navPhone').textContent = '🔴 On call...';
+  }
+
+  function endVapiCall() {
+    if (vapiInstance) vapiInstance.stop();
+    document.getElementById('vapiOverlay').classList.remove('active');
+    const navPhone = document.getElementById('navPhone');
+    navPhone.classList.remove('calling');
+    navPhone.innerHTML = '📞 1-888-777-4642';
+  }
+
   let chatOpen = false;
   let conversationStep = 0;
   let selectedDest = null;
@@ -793,6 +998,7 @@
   let bookingRef = null;
   let exchangeCount = 0;
   let repOffered = false;
+  let pendingAttachment = null;
 
   const destinations = [
     {
@@ -918,12 +1124,41 @@
     });
   }
 
+  function handleFileSelect(input) {
+    const file = input.files[0];
+    if (!file) return;
+    pendingAttachment = file;
+    const preview = document.getElementById('attachPreview');
+    const thumb = document.getElementById('attachThumb');
+    const icon = document.getElementById('attachIcon');
+    const name = document.getElementById('attachName');
+    preview.style.display = 'flex';
+    name.textContent = file.name;
+    if (file.type.startsWith('image/')) {
+      const reader = new FileReader();
+      reader.onload = e => { thumb.src = e.target.result; thumb.style.display = 'block'; icon.style.display = 'none'; };
+      reader.readAsDataURL(file);
+    } else {
+      thumb.style.display = 'none';
+      icon.style.display = 'inline';
+    }
+    input.value = '';
+  }
+
+  function removeAttachment() {
+    pendingAttachment = null;
+    document.getElementById('attachPreview').style.display = 'none';
+    document.getElementById('attachThumb').src = '';
+  }
+
   function sendUserMsg() {
     const input = document.getElementById('chatInput');
     const text = input.value.trim();
-    if (!text) return;
+    if (!text && !pendingAttachment) return;
     input.value = '';
-    handleUserInput(text);
+    const attachment = pendingAttachment;
+    removeAttachment();
+    handleUserInput(text || '📎 Sent an attachment', attachment);
   }
 
   const frustrationKeywords = ['frustrated', 'annoying', 'useless', 'not helpful', 'still not', 'still don\'t', 'still cant', 'still can\'t', 'not working', 'terrible', 'awful', 'ridiculous', 'this is stupid', 'forget it', 'give up', 'no help', 'unhelpful', 'worst', 'angry', 'fed up'];
@@ -940,8 +1175,15 @@
     }
   }
 
-  function handleUserInput(text) {
-    addUserMsg(text);
+  function handleUserInput(text, attachment) {
+    addUserMsg(text, attachment);
+    if (attachment) {
+      exchangeCount++;
+      showTyping(1200, () => {
+        addBotMsg(`Thanks for sharing that! 📎 I can see you've uploaded <strong>${attachment.name}</strong>.<br><br>Our support team will be able to view this when they follow up with you. Would you like me to connect you to a representative so they can look into this for you?`, ['Yes, connect me', 'No thanks']);
+      });
+      return;
+    }
     const lower = text.toLowerCase();
     exchangeCount++;
 
@@ -1240,10 +1482,20 @@
     scrollToBottom();
   }
 
-  function addUserMsg(text) {
+  function addUserMsg(text, attachment) {
     const el = document.createElement('div');
     el.classList.add('msg', 'user');
-    el.innerHTML = `<div class="msg-avatar">👤</div><div class="msg-bubble">${text}</div>`;
+    let attachHtml = '';
+    if (attachment) {
+      if (attachment.type.startsWith('image/')) {
+        const url = URL.createObjectURL(attachment);
+        attachHtml = `<div class="msg-attachment"><img src="${url}" alt="${attachment.name}" /></div>`;
+      } else {
+        attachHtml = `<div class="msg-attachment"><div class="msg-attachment-file">📄 ${attachment.name}</div></div>`;
+      }
+    }
+    const bubbleHtml = text ? `<div class="msg-bubble">${text}</div>` : '';
+    el.innerHTML = `<div class="msg-avatar">👤</div><div>${bubbleHtml}${attachHtml}</div>`;
     document.getElementById('chatMessages').appendChild(el);
     scrollToBottom();
   }
