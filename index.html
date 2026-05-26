@@ -966,13 +966,28 @@
 </div>
 
 <script>
-  const VAPI_DEMO_URL = 'https://vapi.ai?demo=true&shareKey=4ce8ff8c-88b1-4c5d-8687-a12014cc63f2&assistantId=00db4fb5-cc25-4aa0-81f1-70405b026138';
+  const VAPI_PUBLIC_KEY = '4ce8ff8c-88b1-4c5d-8687-a12014cc63f2';
+  const VAPI_ASSISTANT_ID = '00db4fb5-cc25-4aa0-81f1-70405b026138';
+  let vapiInstance = null;
 
-  function startVapiCall() {
-    window.open(VAPI_DEMO_URL, '_blank');
+  async function startVapiCall() {
+    try {
+      if (!vapiInstance) {
+        const { default: Vapi } = await import('https://cdn.jsdelivr.net/npm/@vapi-ai/web/+esm');
+        vapiInstance = new Vapi(VAPI_PUBLIC_KEY);
+        vapiInstance.on('call-end', endVapiCall);
+      }
+      await vapiInstance.start(VAPI_ASSISTANT_ID);
+      document.getElementById('vapiOverlay').classList.add('active');
+      document.getElementById('navPhone').classList.add('calling');
+      document.getElementById('navPhone').innerHTML = '🔴 On call...';
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   function endVapiCall() {
+    if (vapiInstance) vapiInstance.stop();
     document.getElementById('vapiOverlay').classList.remove('active');
     const navPhone = document.getElementById('navPhone');
     navPhone.classList.remove('calling');
