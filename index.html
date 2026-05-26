@@ -794,6 +794,7 @@
   let firstName = null;
   let lastName = null;
   let flightConfirmNum = null;
+  let hasCompletedFirstTopic = false;
 
   const destinations = [
     { emoji: '🏖️', name: 'Cancún, Mexico', sub: 'Beach · All-inclusive', vibe: 'white sand beaches and incredible nightlife' },
@@ -814,7 +815,6 @@
     { emoji: '📄', label: 'Travel documents', key: 'docs' },
     { emoji: '🔄', label: 'Change or cancel', key: 'change' },
     { emoji: '🗺️', label: 'Destination info', key: 'destinfo' },
-    { emoji: '👤', label: 'Speak to a representative', key: 'advisor' },
   ];
 
   function openChat() {
@@ -932,13 +932,13 @@
       showTyping(1000, () => addBotMsg(`✈️ I can pull up your flight details right now.<br><br>What's your <strong>first name</strong>?`));
     } else if (key === 'hotel') {
       conversationStep = 1;
-      showTyping(1300, () => addBotMsg(`🏨 Here's your hotel & rooming info:<br><br>• Your hotel assignment is in your booking confirmation<br>• Room requests (e.g. roommate changes) must be submitted <strong>14 days before travel</strong><br>• Check-in is typically <strong>3pm local time</strong>, check-out at <strong>11am</strong><br>• Early check-in can be requested but isn't guaranteed<br><br>Need to change your room or roommate?`, ['Change roommate', 'Early check-in request', 'Speak to a representative']));
+      showTyping(1300, () => { hasCompletedFirstTopic = true; addBotMsg(`🏨 Here's your hotel & rooming info:<br><br>• Your hotel assignment is in your booking confirmation<br>• Room requests (e.g. roommate changes) must be submitted <strong>14 days before travel</strong><br>• Check-in is typically <strong>3pm local time</strong>, check-out at <strong>11am</strong><br>• Early check-in can be requested but isn't guaranteed<br><br>Need to change your room or roommate?`, ['Change roommate', 'Early check-in request', 'Speak to a representative']); });
     } else if (key === 'docs') {
       conversationStep = 1;
-      showTyping(1400, () => addBotMsg(`📄 Travel document requirements:<br><br><strong>For Mexico (Cancún, Cabo, Puerto Vallarta):</strong><br>✅ Valid US passport (6 months validity)<br>✅ Tourist card (FMM) — provided on your flight<br><br><strong>For Dominican Republic (Punta Cana):</strong><br>✅ Valid US passport<br>✅ E-ticket (included in your package)<br><br><strong>For Bahamas (Nassau, Bimini):</strong><br>✅ Valid US passport or passport card<br><br>All documents should be valid for <strong>6 months beyond</strong> your travel date.`, ['My passport expires soon', 'Other destination docs', 'Speak to a representative']));
+      showTyping(1400, () => { hasCompletedFirstTopic = true; addBotMsg(`📄 Travel document requirements:<br><br><strong>For Mexico (Cancún, Cabo, Puerto Vallarta):</strong><br>✅ Valid US passport (6 months validity)<br>✅ Tourist card (FMM) — provided on your flight<br><br><strong>For Dominican Republic (Punta Cana):</strong><br>✅ Valid US passport<br>✅ E-ticket (included in your package)<br><br><strong>For Bahamas (Nassau, Bimini):</strong><br>✅ Valid US passport or passport card<br><br>All documents should be valid for <strong>6 months beyond</strong> your travel date.`, ['My passport expires soon', 'Other destination docs', 'Speak to a representative']); });
     } else if (key === 'change') {
       conversationStep = 1;
-      showTyping(1300, () => addBotMsg(`🔄 Changes & cancellations — here's our policy:<br><br>• <strong>Name changes:</strong> Allowed up to 30 days before travel (fee may apply)<br>• <strong>Date changes:</strong> Subject to availability, contact a representative<br>• <strong>Cancellations 60+ days out:</strong> Deposit retained, balance refunded<br>• <strong>Cancellations under 60 days:</strong> No refund — travel insurance recommended<br><br>Want to start a change or cancellation request?`, ['Start a change request', 'Start a cancellation', 'Speak to a representative']));
+      showTyping(1300, () => { hasCompletedFirstTopic = true; addBotMsg(`🔄 Changes & cancellations — here's our policy:<br><br>• <strong>Name changes:</strong> Allowed up to 30 days before travel (fee may apply)<br>• <strong>Date changes:</strong> Subject to availability, contact a representative<br>• <strong>Cancellations 60+ days out:</strong> Deposit retained, balance refunded<br>• <strong>Cancellations under 60 days:</strong> No refund — travel insurance recommended<br><br>Want to start a change or cancellation request?`, ['Start a change request', 'Start a cancellation', 'Speak to a representative']); });
     } else if (key === 'destinfo') {
       conversationStep = 'destinfo_pick';
       showTyping(1100, () => {
@@ -952,13 +952,16 @@
   }
 
   function showSupportTopics(intro) {
+    const allTopics = hasCompletedFirstTopic
+      ? [...supportTopics, { emoji: '👤', label: 'Speak to a representative', key: 'advisor' }]
+      : supportTopics;
     const el = document.createElement('div');
     el.classList.add('msg', 'bot');
     el.innerHTML = `
       <div class="msg-avatar">☀️</div>
       <div style="max-width:92%">
         <div class="dest-options" style="margin-top:4px">
-          ${supportTopics.map(t => `
+          ${allTopics.map(t => `
             <div class="dest-option-card" onclick="handleTopicClick('${t.key}')">
               <div class="dest-option-left">
                 <div class="dest-option-emoji">${t.emoji}</div>
@@ -1000,9 +1003,15 @@
     scrollToBottom();
   }
 
+  const allTopicLabels = {
+    booking: '📋 Check my booking', flight: '🛫 Flight info', hotel: '🏨 Hotel & rooming',
+    docs: '📄 Travel documents', change: '🔄 Change or cancel',
+    destinfo: '🗺️ Destination info', advisor: '👤 Speak to a representative',
+  };
+
   function handleTopicClick(key) {
-    const topic = supportTopics.find(t => t.key === key);
-    if (topic) addUserMsg(`${topic.emoji} ${topic.label}`);
+    const label = allTopicLabels[key];
+    if (label) addUserMsg(label);
     handleTopic(key);
   }
 
@@ -1016,6 +1025,7 @@
   function showDestinationInfo(dest) {
     conversationStep = 1;
     showTyping(1300, () => {
+      hasCompletedFirstTopic = true;
       addBotMsg(`${dest.emoji} <strong>${dest.name}</strong> is known for ${dest.vibe}.<br><br>Here's a quick overview:<br><br>🌡️ <strong>Weather:</strong> Warm and sunny, typically 28–34°C during spring break<br>🕐 <strong>Time zone:</strong> Check your confirmation for local time<br>🏥 <strong>Health:</strong> No vaccines required for US citizens, but travel insurance is strongly recommended<br>💊 <strong>Water:</strong> Drink bottled water only (applies to Mexico & DR)<br>📱 <strong>Mobile:</strong> Check international roaming with your carrier before you go<br><br>Want to know anything more specific?`, ['Travel documents needed', 'What to pack', 'Speak to a representative']);
     });
   }
@@ -1063,6 +1073,7 @@
     `;
     document.getElementById('chatMessages').appendChild(el);
     scrollToBottom();
+    hasCompletedFirstTopic = true;
     conversationStep = 1;
   }
 
@@ -1110,6 +1121,7 @@
     `;
     document.getElementById('chatMessages').appendChild(el);
     scrollToBottom();
+    hasCompletedFirstTopic = true;
     conversationStep = 1;
   }
 
