@@ -71,87 +71,6 @@
     transition: transform 0.15s;
   }
   .nav-cta:hover { transform: scale(1.04); }
-  .nav-phone {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    color: rgba(255,255,255,0.85);
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    border: 1px solid rgba(255,255,255,0.2);
-    padding: 8px 16px;
-    border-radius: 50px;
-    transition: all 0.2s;
-    text-decoration: none;
-  }
-  .nav-phone:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.4); color: white; }
-  .nav-phone.calling { background: var(--coral); border-color: var(--coral); color: white; animation: pulse-phone 1.5s infinite; }
-  @keyframes pulse-phone { 0%,100%{opacity:1} 50%{opacity:0.75} }
-  .vapi-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(10,22,40,0.7);
-    z-index: 2000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s;
-  }
-  .vapi-overlay.active { opacity: 1; pointer-events: all; }
-  .vapi-modal {
-    background: white;
-    border-radius: 24px;
-    padding: 36px 32px;
-    text-align: center;
-    max-width: 320px;
-    width: 90%;
-    box-shadow: 0 20px 80px rgba(0,0,0,0.3);
-  }
-  .vapi-pulse {
-    width: 80px; height: 80px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--ocean), var(--deep));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 20px;
-    font-size: 32px;
-    position: relative;
-  }
-  .vapi-pulse::before, .vapi-pulse::after {
-    content: '';
-    position: absolute;
-    border-radius: 50%;
-    border: 2px solid var(--ocean);
-    animation: ripple 2s infinite;
-  }
-  .vapi-pulse::before { width: 100px; height: 100px; animation-delay: 0s; }
-  .vapi-pulse::after { width: 120px; height: 120px; animation-delay: 0.4s; }
-  @keyframes ripple { 0%{opacity:0.6;transform:scale(1)} 100%{opacity:0;transform:scale(1.4)} }
-  .vapi-modal h3 {
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-size: 20px;
-    font-weight: 800;
-    color: var(--deep);
-    margin-bottom: 6px;
-  }
-  .vapi-modal p { font-size: 14px; color: var(--muted); margin-bottom: 24px; line-height: 1.5; }
-  .vapi-end {
-    background: var(--coral);
-    color: white;
-    border: none;
-    padding: 12px 28px;
-    border-radius: 50px;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 600;
-    font-size: 14px;
-    cursor: pointer;
-    transition: opacity 0.15s;
-  }
-  .vapi-end:hover { opacity: 0.85; }
 
   /* ---- HERO ---- */
   .hero {
@@ -659,15 +578,10 @@
     padding: 14px 16px;
     border-top: 1px solid #F1F5F9;
     display: flex;
-    flex-direction: column;
-    gap: 8px;
-    flex-shrink: 0;
-    background: white;
-  }
-  .chat-input-row {
-    display: flex;
     gap: 10px;
     align-items: center;
+    flex-shrink: 0;
+    background: white;
   }
   .chat-input {
     flex: 1;
@@ -682,20 +596,6 @@
   }
   .chat-input:focus { border-color: var(--ocean); }
   .chat-input::placeholder { color: #94A3B8; }
-  .chat-attach {
-    width: 40px; height: 40px;
-    background: #F1F5F9;
-    border: none;
-    border-radius: 50%;
-    color: var(--muted);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.15s, color 0.15s;
-    flex-shrink: 0;
-  }
-  .chat-attach:hover { background: #E2E8F0; color: var(--deep); }
   .chat-send {
     width: 40px; height: 40px;
     background: var(--deep);
@@ -710,61 +610,6 @@
     flex-shrink: 0;
   }
   .chat-send:hover { background: var(--ocean); transform: scale(1.05); }
-  .attach-preview {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: #F1F5F9;
-    border-radius: 10px;
-    padding: 8px 12px;
-    font-size: 12px;
-    color: var(--text);
-  }
-  .attach-preview img {
-    width: 40px; height: 40px;
-    border-radius: 6px;
-    object-fit: cover;
-    flex-shrink: 0;
-  }
-  .attach-preview-name {
-    flex: 1;
-    font-weight: 500;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 200px;
-  }
-  .attach-remove {
-    background: none;
-    border: none;
-    color: var(--muted);
-    cursor: pointer;
-    font-size: 14px;
-    padding: 0 2px;
-    line-height: 1;
-  }
-  .attach-remove:hover { color: var(--coral); }
-  .msg-attachment {
-    margin-top: 6px;
-    max-width: 200px;
-    border-radius: 10px;
-    overflow: hidden;
-  }
-  .msg-attachment img {
-    width: 100%;
-    display: block;
-    border-radius: 10px;
-  }
-  .msg-attachment-file {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(255,255,255,0.15);
-    border-radius: 10px;
-    padding: 8px 10px;
-    font-size: 12px;
-    color: white;
-  }
   .chat-footer-note { font-size: 10px; color: var(--muted); text-align: center; padding: 0 16px 10px; }
 
   /* Demo label */
@@ -811,6 +656,78 @@
   .feature-title { font-family: 'Bricolage Grotesque', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 8px; color: var(--deep); }
   .feature-desc { font-size: 14px; color: var(--muted); line-height: 1.6; }
 
+  /* ---- VAPI — hide the default SDK widget completely ---- */
+  #vapi-support-btn,
+  [id^="vapi-"],
+  [class^="vapi-"],
+  [class*=" vapi-"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  /* ---- VAPI VOICE ---- */
+  .voice-btn {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.12);
+    color: white;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s, transform 0.15s;
+    flex-shrink: 0;
+    margin-right: 4px;
+  }
+  .voice-btn:hover { background: rgba(255,255,255,0.22); transform: scale(1.08); }
+  .voice-btn.connecting { background: var(--sun); }
+  .voice-btn.active {
+    background: var(--coral);
+    animation: vapi-pulse 1.5s infinite;
+  }
+  @keyframes vapi-pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(255,107,107,0.55); }
+    70%  { box-shadow: 0 0 0 9px rgba(255,107,107,0); }
+    100% { box-shadow: 0 0 0 0 rgba(255,107,107,0); }
+  }
+  .voice-active-bar {
+    display: none;
+    background: linear-gradient(135deg, var(--deep), var(--mid));
+    padding: 12px 16px;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .voice-active-bar.show { display: flex; }
+  .voice-wave { display: flex; align-items: center; gap: 3px; flex: 1; }
+  .voice-wave span {
+    display: block; width: 3px; border-radius: 2px;
+    background: var(--sun);
+    animation: vapi-wave 1s ease-in-out infinite;
+  }
+  .voice-wave span:nth-child(1) { height: 8px;  animation-delay: 0s; }
+  .voice-wave span:nth-child(2) { height: 16px; animation-delay: 0.1s; }
+  .voice-wave span:nth-child(3) { height: 22px; animation-delay: 0.2s; }
+  .voice-wave span:nth-child(4) { height: 16px; animation-delay: 0.3s; }
+  .voice-wave span:nth-child(5) { height: 8px;  animation-delay: 0.4s; }
+  .voice-wave.listening span { background: var(--lime); animation: none; height: 5px; }
+  .voice-wave.listening span:nth-child(3) { height: 12px; }
+  @keyframes vapi-wave {
+    0%, 100% { transform: scaleY(0.4); }
+    50%       { transform: scaleY(1); }
+  }
+  .voice-label { font-size: 12px; color: rgba(255,255,255,0.75); white-space: nowrap; }
+  .voice-end-btn {
+    background: var(--coral); color: white; border: none;
+    border-radius: 50px; padding: 5px 14px;
+    font-size: 12px; font-weight: 600; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; flex-shrink: 0;
+  }
+  .voice-end-btn:hover { background: #e05252; }
+
   @media (max-width: 768px) {
     nav { padding: 14px 20px; }
     .nav-links { display: none; }
@@ -837,23 +754,8 @@
     <a href="#">Deals</a>
     <a href="#">About</a>
   </div>
-  <div style="display:flex;align-items:center;gap:12px;">
-    <a class="nav-phone" id="navPhone" onclick="startVapiCall()">
-      📞 1-888-777-4642
-    </a>
-    <button class="nav-cta">Book Now</button>
-  </div>
+  <button class="nav-cta">Book Now</button>
 </nav>
-
-<!-- Vapi call overlay -->
-<div class="vapi-overlay" id="vapiOverlay">
-  <div class="vapi-modal">
-    <div class="vapi-pulse">☀️</div>
-    <h3>Sunny is listening</h3>
-    <p>You're connected to StudentCity's AI voice assistant. Ask anything about bookings, destinations, or travel info.</p>
-    <button class="vapi-end" onclick="endVapiCall()">End Call</button>
-  </div>
-</div>
 
 <!-- Hero -->
 <section class="hero">
@@ -864,25 +766,25 @@
 
     <div class="hero-stats">
       <div>
-        <div class="stat-num">20K+</div>
-        <div class="stat-label">Students annually</div>
+        <div class="stat-num">12K+</div>
+        <div class="stat-label">Students booked</div>
       </div>
       <div>
-        <div class="stat-num">10</div>
+        <div class="stat-num">9</div>
         <div class="stat-label">Dream destinations</div>
       </div>
       <div>
-        <div class="stat-num">30+</div>
-        <div class="stat-label">Years experience</div>
+        <div class="stat-num">24/7</div>
+        <div class="stat-label">Support available</div>
       </div>
     </div>
   </div>
   <div class="hero-visual">
     <div class="dest-cards">
-      <div class="dest-card"><div class="dest-emoji">🏖️</div><div class="dest-name">Cancún, Mexico</div><div class="dest-price">From $799 · All-inclusive</div></div>
+      <div class="dest-card"><div class="dest-emoji">🏖️</div><div class="dest-name">Cancún, Mexico</div><div class="dest-price">Beach · All-inclusive</div></div>
       <div class="dest-card"><div class="dest-emoji">🌴</div><div class="dest-name">Punta Cana</div><div class="dest-price">Caribbean · All-inclusive</div></div>
-      <div class="dest-card"><div class="dest-emoji">🌊</div><div class="dest-name">Nassau</div><div class="dest-price">From $1,199 · Beach resort</div></div>
-      <div class="dest-card"><div class="dest-emoji">🎉</div><div class="dest-name">Panama City Beach</div><div class="dest-price">From $299 · Party central</div></div>
+      <div class="dest-card"><div class="dest-emoji">🌊</div><div class="dest-name">Nassau</div><div class="dest-price">Bahamas · Beach resort</div></div>
+      <div class="dest-card"><div class="dest-emoji">🐠</div><div class="dest-name">Cabo</div><div class="dest-price">Mexico · Resort stay</div></div>
     </div>
   </div>
 </section>
@@ -892,11 +794,11 @@
   <div class="section-label">Where do you want to go?</div>
   <div class="section-title">Top student destinations 🔥</div>
   <div class="dest-grid">
-    <div class="dest-tile"><div class="dest-tile-bg cancun">🏖️</div><div class="dest-tile-overlay"><div class="dest-tile-name">Cancún, Mexico</div><div class="dest-tile-sub">From $799 · All-inclusive</div></div></div>
+    <div class="dest-tile"><div class="dest-tile-bg cancun">🏖️</div><div class="dest-tile-overlay"><div class="dest-tile-name">Cancún, Mexico</div><div class="dest-tile-sub">Beach · All-inclusive</div></div></div>
     <div class="dest-tile"><div class="dest-tile-bg punta">🌴</div><div class="dest-tile-overlay"><div class="dest-tile-name">Punta Cana, DR</div><div class="dest-tile-sub">Caribbean · All-inclusive</div></div></div>
     <div class="dest-tile"><div class="dest-tile-bg cabo">🌵</div><div class="dest-tile-overlay"><div class="dest-tile-name">Cabo, Mexico</div><div class="dest-tile-sub">Pacific coast · Resort</div></div></div>
-    <div class="dest-tile"><div class="dest-tile-bg nassau">🐚</div><div class="dest-tile-overlay"><div class="dest-tile-name">Nassau, Bahamas</div><div class="dest-tile-sub">From $1,199 · Beach resort</div></div></div>
-    <div class="dest-tile"><div class="dest-tile-bg pcb">🎉</div><div class="dest-tile-overlay"><div class="dest-tile-name">Panama City Beach</div><div class="dest-tile-sub">From $299 · Party central</div></div></div>
+    <div class="dest-tile"><div class="dest-tile-bg nassau">🐚</div><div class="dest-tile-overlay"><div class="dest-tile-name">Nassau, Bahamas</div><div class="dest-tile-sub">Island · Beach resort</div></div></div>
+    <div class="dest-tile"><div class="dest-tile-bg pcb">🎉</div><div class="dest-tile-overlay"><div class="dest-tile-name">Panama City Beach</div><div class="dest-tile-sub">Florida · Party central</div></div></div>
     <div class="dest-tile"><div class="dest-tile-bg bimini">⚓</div><div class="dest-tile-overlay"><div class="dest-tile-name">Bimini, Bahamas</div><div class="dest-tile-sub">Island · Escape</div></div></div>
   </div>
 </section>
@@ -938,62 +840,36 @@
     <div class="chat-avatar">☀️</div>
     <div class="chat-header-info">
       <div class="chat-header-name">StudentCity Support</div>
-      <div class="chat-header-status"><div class="status-dot"></div> Online · AI customer service</div>
+      <div class="chat-header-status" id="chatHeaderStatus"><div class="status-dot"></div> Online · AI customer service</div>
     </div>
+    <button class="voice-btn" id="voiceBtn" onclick="toggleVoice()" title="Talk to Sunny">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+        <path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/>
+        <line x1="8" y1="23" x2="16" y2="23"/>
+      </svg>
+    </button>
     <button class="chat-close" onclick="closeChat()">✕</button>
+  </div>
+  <div class="voice-active-bar" id="voiceActiveBar">
+    <div class="voice-wave" id="voiceWave">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="voice-label" id="voiceLabel">Sunny is speaking...</div>
+    <button class="voice-end-btn" onclick="endVoiceCall()">End call</button>
   </div>
   <div class="hs-badge" id="hsBadge">🟠 HubSpot — Lead captured in CRM pipeline</div>
   <div class="chat-messages" id="chatMessages"></div>
   <div class="chat-input-area">
-    <div id="attachPreview" style="display:none" class="attach-preview">
-      <img id="attachThumb" src="" alt="" style="display:none" />
-      <span id="attachIcon" style="font-size:20px;display:none">📄</span>
-      <span class="attach-preview-name" id="attachName"></span>
-      <button class="attach-remove" onclick="removeAttachment()" title="Remove">✕</button>
-    </div>
-    <div class="chat-input-row">
-      <input type="file" id="fileInput" accept="image/*,.pdf,.doc,.docx,.txt" style="display:none" onchange="handleFileSelect(this)" />
-      <button class="chat-attach" onclick="document.getElementById('fileInput').click()" title="Attach file or image">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
-      </button>
-      <input type="text" class="chat-input" id="chatInput" placeholder="Ask Sunny anything..." onkeydown="if(event.key==='Enter') sendUserMsg()" />
-      <button class="chat-send" onclick="sendUserMsg()">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-      </button>
-    </div>
+    <input type="text" class="chat-input" id="chatInput" placeholder="Ask Sunny anything..." onkeydown="if(event.key==='Enter') sendUserMsg()" />
+    <button class="chat-send" onclick="sendUserMsg()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    </button>
   </div>
-  <div class="chat-footer-note">AI-powered support · <a href="#" onclick="startVapiCall();return false;" style="color:var(--ocean);font-weight:600;text-decoration:none;">📞 1-888-777-4642</a> · Talk to Sunny by voice</div>
+  <div class="chat-footer-note">AI-powered support · Tap the mic to talk to Sunny by voice.</div>
 </div>
 
 <script>
-  const VAPI_PUBLIC_KEY = '4ce8ff8c-88b1-4c5d-8687-a12014cc63f2';
-  const VAPI_ASSISTANT_ID = '00db4fb5-cc25-4aa0-81f1-70405b026138';
-  let vapiInstance = null;
-
-  async function startVapiCall() {
-    try {
-      if (!vapiInstance) {
-        const { default: Vapi } = await import('https://cdn.jsdelivr.net/npm/@vapi-ai/web/+esm');
-        vapiInstance = new Vapi(VAPI_PUBLIC_KEY);
-        vapiInstance.on('call-end', endVapiCall);
-      }
-      await vapiInstance.start(VAPI_ASSISTANT_ID);
-      document.getElementById('vapiOverlay').classList.add('active');
-      document.getElementById('navPhone').classList.add('calling');
-      document.getElementById('navPhone').innerHTML = '🔴 On call...';
-    } catch (e) {
-      console.error(e);
-    }
-  }
-
-  function endVapiCall() {
-    if (vapiInstance) vapiInstance.stop();
-    document.getElementById('vapiOverlay').classList.remove('active');
-    const navPhone = document.getElementById('navPhone');
-    navPhone.classList.remove('calling');
-    navPhone.innerHTML = '📞 1-888-777-4642';
-  }
-
   let chatOpen = false;
   let conversationStep = 0;
   let selectedDest = null;
@@ -1001,119 +877,36 @@
   let userName = null;
   let userEmail = null;
   let bookingRef = null;
-  let exchangeCount = 0;
-  let repOffered = false;
-  let pendingAttachment = null;
+  let firstName = null;
+  let lastName = null;
+  let flightConfirmNum = null;
 
   const destinations = [
-    {
-      emoji: '🏖️', name: 'Cancún, Mexico', sub: 'From $799 · All-inclusive', price: 'From $799',
-      hotel: 'Grand Oasis Cancun (HQ) — largest pool in Cancun, 1/4 mile long',
-      tiers: '🏨 <strong>Package tiers:</strong><br>• Deluxe Room — <strong>$799</strong><br>• Super Deluxe — <strong>$999</strong><br>• Super Duper — <strong>$1,179</strong>',
-      included: 'All-inclusive (food & drinks), roundtrip airport transfers, daily pool & beach parties, Inception Music Festival, 24/7 onsite team',
-      vibe: 'white sand beaches, incredible nightlife, and the Inception Music Festival with headline DJs. Headquarters hotel is the Grand Oasis Cancun with the largest pool in Cancun — 1/4 mile long'
-    },
-    {
-      emoji: '🌴', name: 'Punta Cana, DR', sub: 'Custom quote · All-inclusive', price: 'Custom quote — call 1-888-777-4642',
-      hotel: 'Occidental Caribe (HQ) — large pool, beachfront, all-inclusive',
-      tiers: 'Pricing is customised based on travel dates and group size.',
-      included: 'All-inclusive (food & drinks), roundtrip airport transfers, daily beach parties with StudentCity DJs, 24/7 onsite team',
-      vibe: 'crystal clear Caribbean water, all-inclusive resorts, and exclusive StudentCity beach parties with open bars and included transportation'
-    },
-    {
-      emoji: '🌵', name: 'Cabo, Mexico', sub: 'Custom quote · All-inclusive', price: 'Custom quote — call 1-888-777-4642',
-      hotel: 'Pueblo Bonito Rose (HQ) — all-suite beachfront, views of the famous arches, 24/7 all-inclusive',
-      tiers: 'Pricing is customised based on travel dates and group size.',
-      included: 'All-inclusive (food & drinks), roundtrip airport transfers, booze cruises, VIP club access, 24/7 onsite team',
-      vibe: 'stunning Pacific coastline, iconic booze cruises, VIP club access, and amazing restaurants — all from the all-suite Pueblo Bonito Rose resort'
-    },
-    {
-      emoji: '🐚', name: 'Nassau, Bahamas', sub: 'From $1,199 · All-inclusive', price: 'From $1,199',
-      hotel: 'Breezes Bahamas Resort (HQ) — all-inclusive, beachfront',
-      tiers: 'Pricing is customised based on travel dates and group size. Platinum upgrades include Private Island day parties.',
-      included: 'All-inclusive (food & drinks), roundtrip airport transfers, open-bar party passes, Private Island day party (Platinum), 24/7 onsite team',
-      vibe: 'island paradise with exclusive open-bar events, Private Island day parties, and beautiful beaches — all from the all-inclusive Breezes Bahamas Resort'
-    },
-    {
-      emoji: '🎉', name: 'Panama City Beach', sub: 'From $299 · Party central', price: 'From $299',
-      hotel: 'SpringHill Suites by Marriott (HQ) — Gulf Coast views, modern suites',
-      tiers: 'Pricing is customised based on travel dates and group size. Note: US destinations are not all-inclusive.',
-      included: 'Hotel accommodation, exclusive Welcome Dinner (Sunday, 120 min open buffet & drinks), VIP Party Card (free entry & special rates at events all week), optional motorcoach transport, 24/7 onsite team',
-      vibe: 'non-stop Gulf Coast beach parties, the Beach Bash Music Fest, and a Welcome Dinner on arrival — Florida\'s biggest spring break destination. Note: not all-inclusive, meals purchased separately'
-    },
-    {
-      emoji: '⚓', name: 'Bimini, Bahamas', sub: 'Custom quote · Island escape', price: 'Custom quote — call 1-888-777-4642',
-      hotel: 'Contact StudentCity for current headquarters hotel',
-      tiers: 'Pricing is customised based on travel dates and group size.',
-      included: 'Hotel accommodation, roundtrip transfers, island events, 24/7 onsite team',
-      vibe: 'a remote island escape with crystal clear water, a relaxed vibe, and stunning natural beauty — perfect for a more laid-back spring break'
-    },
-    {
-      emoji: '🌊', name: 'Puerto Vallarta, Mexico', sub: 'Custom quote · All-inclusive', price: 'Custom quote — call 1-888-777-4642',
-      hotel: 'Contact StudentCity for current headquarters hotel',
-      tiers: 'Pricing is customised based on travel dates and group size.',
-      included: 'All-inclusive (food & drinks), roundtrip airport transfers, daily events, 24/7 onsite team',
-      vibe: 'charming cobblestone streets meet beach resort living, with great food, nightlife, and an authentic Mexican vibe'
-    },
-    {
-      emoji: '🌞', name: 'Fort Lauderdale, FL', sub: 'Custom quote · Florida classic', price: 'Custom quote — call 1-888-777-4642',
-      hotel: 'Contact StudentCity for current headquarters hotel',
-      tiers: 'Pricing is customised based on travel dates and group size. Note: US destinations are not all-inclusive.',
-      included: 'Hotel accommodation, beachside parties, VIP event access, 24/7 onsite team',
-      vibe: 'classic spring break beaches, beachside parties, and premier nightlife in one of Florida\'s most iconic beach cities'
-    },
-    {
-      emoji: '🏄', name: 'South Padre Island, TX', sub: 'Custom quote · Beach party', price: 'Custom quote — call 1-888-777-4642',
-      hotel: 'The Inn at South Padre / Isla Grand Beach Resort',
-      tiers: 'Pricing is customised based on travel dates and group size. Note: US destinations are not all-inclusive.',
-      included: 'Hotel accommodation, exclusive Welcome Party, Padremaniac Party Card (VIP club access all week), 3 meal vouchers, optional motorcoach transport, 24/7 onsite team',
-      vibe: 'Texas\'s favourite spring break with the Padremaniac Party Card for VIP club access, a Welcome Party, meal vouchers, and 33 miles of beautiful shoreline'
-    },
-    {
-      emoji: '🌺', name: 'Saint Maarten', sub: 'Custom quote · Caribbean island', price: 'Custom quote — call 1-888-777-4642',
-      hotel: 'Contact StudentCity for current headquarters hotel',
-      tiers: 'Pricing is customised based on travel dates and group size.',
-      included: 'Hotel accommodation, roundtrip transfers, island events, 24/7 onsite team',
-      vibe: 'a stunning dual-nation Caribbean island with beautiful beaches on both the French and Dutch sides, world-class dining, and vibrant nightlife'
-    },
+    { emoji: '🏖️', name: 'Cancún, Mexico', sub: 'Beach · All-inclusive', vibe: 'white sand beaches and incredible nightlife' },
+    { emoji: '🌴', name: 'Punta Cana, DR', sub: 'Caribbean · All-inclusive', vibe: 'crystal clear water and laid-back vibes' },
+    { emoji: '🌵', name: 'Cabo, Mexico', sub: 'Pacific coast · Resort', vibe: 'stunning Pacific scenery and great restaurants' },
+    { emoji: '🐚', name: 'Nassau, Bahamas', sub: 'Island · Beach resort', vibe: 'island paradise with amazing snorkelling' },
+    { emoji: '🎉', name: 'Panama City Beach', sub: 'Florida · Party central', vibe: 'non-stop beach parties and warm Gulf waters' },
+    { emoji: '⚓', name: 'Bimini, Bahamas', sub: 'Island · Escape', vibe: 'remote island escape with crystal water' },
+    { emoji: '🌊', name: 'Puerto Vallarta, Mexico', sub: 'Pacific · Resort town', vibe: 'charming cobblestone streets meets beach resort' },
+    { emoji: '🌞', name: 'Fort Lauderdale, US', sub: 'Florida · Classic', vibe: 'classic spring break scene with beautiful beaches' },
+    { emoji: '🏄', name: 'South Padre Island, TX', sub: 'Texas · Beach party', vibe: 'Texas spring break favourite with non-stop fun' },
   ];
-
-  const destKeywords = [
-    { keys: ['cancun', 'cancún', 'grand oasis', 'inception'], index: 0 },
-    { keys: ['punta cana', 'punta', 'dominican', 'dr', 'occidental', 'caribe'], index: 1 },
-    { keys: ['cabo', 'cabo san lucas', 'pueblo bonito', 'san lucas'], index: 2 },
-    { keys: ['nassau', 'breezes', 'new providence'], index: 3 },
-    { keys: ['panama city', 'panama', 'pcb', 'springhill', 'gulf coast', 'gulf shores'], index: 4 },
-    { keys: ['bimini'], index: 5 },
-    { keys: ['puerto vallarta', 'vallarta'], index: 6 },
-    { keys: ['fort lauderdale', 'lauderdale', 'ft lauderdale'], index: 7 },
-    { keys: ['south padre', 'padre island', 'padre', 'isla grand'], index: 8 },
-    { keys: ['saint maarten', 'st maarten', 'st. maarten', 'maarten'], index: 9 },
-  ];
-
-  function findDestFromText(lower) {
-    const match = destKeywords.find(k => k.keys.some(kw => lower.includes(kw)));
-    return match ? destinations[match.index] : null;
-  }
 
   const supportTopics = [
     { emoji: '📋', label: 'Check my booking', key: 'booking' },
-    { emoji: '💰', label: 'Pricing & packages', key: 'pricing' },
-    { emoji: '🗺️', label: 'Destination info', key: 'destinfo' },
     { emoji: '🛫', label: 'Flight info', key: 'flight' },
     { emoji: '🏨', label: 'Hotel & rooming', key: 'hotel' },
     { emoji: '📄', label: 'Travel documents', key: 'docs' },
     { emoji: '🔄', label: 'Change or cancel', key: 'change' },
+    { emoji: '🗺️', label: 'Destination info', key: 'destinfo' },
+    { emoji: '👤', label: 'Speak to a representative', key: 'advisor' },
   ];
 
   function openChat() {
     chatOpen = true;
     document.getElementById('chatWindow').classList.add('open');
-    if (conversationStep === 0) {
-      exchangeCount = 0;
-      repOffered = false;
-      setTimeout(() => startConversation(), 400);
-    }
+    if (conversationStep === 0) setTimeout(() => startConversation(), 400);
   }
 
   function closeChat() {
@@ -1123,126 +916,45 @@
 
   function startConversation() {
     showTyping(1200, () => {
-      addBotMsg(`Hey there! 👋 I'm <strong>Sunny</strong>, the StudentCity AI assistant.<br><br>StudentCity has been the student travel industry leader for <strong>over 30 years</strong>, sending 20,000+ students to amazing destinations every year. I can help with bookings, travel docs, destination info, and more.<br><br>What do you need help with today?`);
+      addBotMsg(`Hey there! 👋 I'm <strong>Sunny</strong>, the StudentCity support assistant.<br><br>I can help with your booking, travel docs, destination questions, and more. What do you need help with today?`);
       showSupportTopics();
       conversationStep = 1;
     });
   }
 
-  function handleFileSelect(input) {
-    const file = input.files[0];
-    if (!file) return;
-    pendingAttachment = file;
-    const preview = document.getElementById('attachPreview');
-    const thumb = document.getElementById('attachThumb');
-    const icon = document.getElementById('attachIcon');
-    const name = document.getElementById('attachName');
-    preview.style.display = 'flex';
-    name.textContent = file.name;
-    if (file.type.startsWith('image/')) {
-      const reader = new FileReader();
-      reader.onload = e => { thumb.src = e.target.result; thumb.style.display = 'block'; icon.style.display = 'none'; };
-      reader.readAsDataURL(file);
-    } else {
-      thumb.style.display = 'none';
-      icon.style.display = 'inline';
-    }
-    input.value = '';
-  }
-
-  function removeAttachment() {
-    pendingAttachment = null;
-    document.getElementById('attachPreview').style.display = 'none';
-    document.getElementById('attachThumb').src = '';
-  }
-
   function sendUserMsg() {
     const input = document.getElementById('chatInput');
     const text = input.value.trim();
-    if (!text && !pendingAttachment) return;
+    if (!text) return;
     input.value = '';
-    const attachment = pendingAttachment;
-    removeAttachment();
-    handleUserInput(text || '📎 Sent an attachment', attachment);
+    handleUserInput(text);
   }
 
-  const frustrationKeywords = ['frustrated', 'annoying', 'useless', 'not helpful', 'still not', 'still don\'t', 'still cant', 'still can\'t', 'not working', 'terrible', 'awful', 'ridiculous', 'this is stupid', 'forget it', 'give up', 'no help', 'unhelpful', 'worst', 'angry', 'fed up'];
-
-  function checkRepOffer() {
-    if (repOffered) return;
-    if (exchangeCount >= 3) {
-      repOffered = true;
-      setTimeout(() => {
-        showTyping(800, () => {
-          addBotMsg(`I want to make sure that this gets sorted for you — would you like me to connect you to a member of our support team?`, ['Yes please', 'No, I\'m good']);
-        });
-      }, 600);
-    }
-  }
-
-  function handleUserInput(text, attachment) {
-    addUserMsg(text, attachment);
-    if (attachment) {
-      exchangeCount++;
-      showTyping(1200, () => {
-        addBotMsg(`Thanks for sharing that! 📎 I can see you've uploaded <strong>${attachment.name}</strong>.<br><br>Our support team will be able to view this when they follow up with you. Would you like me to connect you to a representative so they can look into this for you?`, ['Yes, connect me', 'No thanks']);
-      });
-      return;
-    }
+  function handleUserInput(text) {
+    addUserMsg(text);
     const lower = text.toLowerCase();
-    exchangeCount++;
-
-    // Frustration detection — offer rep immediately
-    if (!repOffered && frustrationKeywords.some(kw => lower.includes(kw))) {
-      repOffered = true;
-      showTyping(800, () => {
-        addBotMsg(`I'm sorry to hear that — I want to make sure this gets sorted for you. Would you like me to connect you to a member of our support team?`, ['Yes please', 'No, keep helping me']);
-      });
-      return;
-    }
-
-    // User accepts rep offer
-    if (lower === 'yes please' || (repOffered && (lower.includes('yes') || lower.includes('connect')))) {
-      handleTopic('advisor'); return;
-    }
 
     // Detect intent from free text at any step
     if (lower.includes('booking') || lower.includes('reservation') || lower.includes('confirm')) {
-      handleTopic('booking'); checkRepOffer(); return;
+      handleTopic('booking'); return;
     }
     if (lower.includes('flight') || lower.includes('fly') || lower.includes('airport') || lower.includes('departure')) {
-      handleTopic('flight'); checkRepOffer(); return;
+      handleTopic('flight'); return;
     }
     if (lower.includes('hotel') || lower.includes('room') || lower.includes('roommate') || lower.includes('accommodation')) {
-      handleTopic('hotel'); checkRepOffer(); return;
+      handleTopic('hotel'); return;
     }
     if (lower.includes('passport') || lower.includes('visa') || lower.includes('document') || lower.includes('id')) {
-      handleTopic('docs'); checkRepOffer(); return;
+      handleTopic('docs'); return;
     }
     if (lower.includes('cancel') || lower.includes('change') || lower.includes('refund') || lower.includes('reschedule')) {
-      handleTopic('change'); checkRepOffer(); return;
+      handleTopic('change'); return;
     }
-    if (lower.includes('destination') || lower.includes('cancun') || lower.includes('cabo') || lower.includes('nassau') || lower.includes('punta') || lower.includes('bahamas') || lower.includes('panama') || lower.includes('bimini') || lower.includes('vallarta') || lower.includes('lauderdale') || lower.includes('padre') || lower.includes('maarten') || lower.includes('where')) {
-      const dest = findDestFromText(lower);
-      if (dest) {
-        conversationStep = 1;
-        showTyping(1100, () => showDestinationInfo(dest));
-      } else {
-        handleTopic('destinfo');
-      }
-      checkRepOffer(); return;
+    if (lower.includes('destination') || lower.includes('cancun') || lower.includes('cabo') || lower.includes('nassau') || lower.includes('punta') || lower.includes('bahamas') || lower.includes('where')) {
+      handleTopic('destinfo'); return;
     }
-    if (lower.includes('advisor') || lower.includes('human') || lower.includes('agent') || lower.includes('person') || lower.includes('speak') || lower.includes('call') || lower.includes('phone') || lower.includes('representative')) {
+    if (lower.includes('advisor') || lower.includes('human') || lower.includes('agent') || lower.includes('person') || lower.includes('speak') || lower.includes('call')) {
       handleTopic('advisor'); return;
-    }
-    if (lower.includes('price') || lower.includes('cost') || lower.includes('how much') || lower.includes('cheap') || lower.includes('budget') || lower.includes('afford')) {
-      handleTopic('pricing'); checkRepOffer(); return;
-    }
-    if (lower.includes('insurance') || lower.includes('coverage') || lower.includes('protect')) {
-      handleTopic('insurance'); checkRepOffer(); return;
-    }
-    if (lower.includes('luggage') || lower.includes('baggage') || lower.includes('bag') || lower.includes('suitcase')) {
-      handleTopic('baggage'); checkRepOffer(); return;
     }
 
     // Step-based flows
@@ -1252,9 +964,26 @@
       showTyping(1600, () => showBookingCard());
       return;
     }
+    if (conversationStep === 'flight_firstname') {
+      firstName = text.trim();
+      conversationStep = 'flight_lastname';
+      showTyping(800, () => addBotMsg(`Got it, ${firstName}. And your <strong>last name</strong>?`));
+      return;
+    }
+    if (conversationStep === 'flight_lastname') {
+      lastName = text.trim();
+      conversationStep = 'flight_confirmnum';
+      showTyping(900, () => addBotMsg(`Perfect. What's your <strong>flight confirmation number</strong>? You'll find it in your StudentCity confirmation email.`));
+      return;
+    }
+    if (conversationStep === 'flight_confirmnum') {
+      flightConfirmNum = text.toUpperCase().trim();
+      conversationStep = 'flight_found';
+      showTyping(1600, () => showFlightCard());
+      return;
+    }
     if (conversationStep === 'collect_name') {
-      const namePhrases = /^(?:my name is|i'm|i am|it's|its|this is|call me)\s+/i;
-      userName = text.replace(namePhrases, '').split(' ')[0];
+      userName = text.split(' ')[0];
       conversationStep = 'collect_email';
       showTyping(900, () => addBotMsg(`Thanks ${userName}! 👋 What's your student email so our representative can follow up?`));
       return;
@@ -1269,15 +998,14 @@
       return;
     }
     if (conversationStep === 'destinfo_pick') {
-      const match = findDestFromText(lower);
+      const match = destinations.find(d => lower.includes(d.name.toLowerCase().split(',')[0].toLowerCase()));
       if (match) { showDestinationInfo(match); return; }
     }
 
-    // Step-based fallback
+    // Fallback
     showTyping(1000, () => {
       addBotMsg(`I want to make sure I help you properly! Here's what I can assist with:`, null, true);
     });
-    checkRepOffer();
   }
 
   function handleTopic(key) {
@@ -1286,35 +1014,26 @@
       conversationStep = 'booking_ref';
       showTyping(1100, () => addBotMsg(`Sure, I can pull up your booking! 📋<br><br>Do you have your <strong>booking reference number</strong>? It's in your confirmation email (e.g. SC-28471).`, ['I have it', "I don't have it"]));
     } else if (key === 'flight') {
-      conversationStep = 1;
-      showTyping(1200, () => addBotMsg(`✈️ Here's what you need to know about flights:<br><br>• Flight details are posted to your <strong>online account no later than 3 weeks before departure</strong> — nothing is mailed<br>• StudentCity uses airlines including <strong>American, United, JetBlue, Delta, Spirit</strong>, and private charters<br>• <strong>Direct flights are not guaranteed</strong> (non-stop options may be available for an extra fee)<br>• Arrive at least <strong>3 hours early</strong> for international flights<br>• <strong>Checked luggage is NOT included</strong> in your package — you pay the airline directly at check-in<br>• Frequent flyer miles cannot be used on StudentCity bookings<br><br>Missing your confirmation or have another question?`, ['Find my confirmation', 'Baggage fees', 'What else can you help with?']));
+      conversationStep = 'flight_firstname';
+      showTyping(1000, () => addBotMsg(`✈️ I can pull up your flight details right now.<br><br>What's your <strong>first name</strong>?`));
     } else if (key === 'hotel') {
       conversationStep = 1;
-      showTyping(1300, () => addBotMsg(`🏨 Here's your hotel & rooming info:<br><br>• Your hotel assignment is in your <strong>booking confirmation</strong><br>• <strong>Random travelers will never be placed in your room</strong> without your explicit permission<br>• Most hotels require a <strong>refundable security deposit of $50–$150 per person</strong> at check-in (cash or card depending on property)<br>• Check-in is typically <strong>3pm local time</strong>, check-out at <strong>11am</strong><br>• Room requests (e.g. roommate changes) should be made as early as possible<br><br>Need to change your roommate or have another hotel question?`, ['Change roommate', 'Security deposit info', 'What else can you help with?']));
+      showTyping(1300, () => addBotMsg(`🏨 Here's your hotel & rooming info:<br><br>• Your hotel assignment is in your booking confirmation<br>• Room requests (e.g. roommate changes) must be submitted <strong>14 days before travel</strong><br>• Check-in is typically <strong>3pm local time</strong>, check-out at <strong>11am</strong><br>• Early check-in can be requested but isn't guaranteed<br><br>Need to change your room or roommate?`, ['Change roommate', 'Early check-in request', 'Speak to a representative']));
     } else if (key === 'docs') {
       conversationStep = 1;
-      showTyping(1400, () => addBotMsg(`📄 Travel document requirements:<br><br><strong>For Mexico (Cancún, Cabo, Puerto Vallarta):</strong><br>✅ Valid US passport (6+ months validity beyond travel date)<br>✅ Tourist card (FMM) — provided on your flight<br><br><strong>For Dominican Republic (Punta Cana):</strong><br>✅ Valid US passport<br>✅ E-ticket — included in your package<br><br><strong>For Bahamas (Nassau, Bimini, Saint Maarten):</strong><br>✅ Valid US passport or US passport card<br><br>📌 Your travel documents will be available to <strong>print from your online account 5–14 days before departure</strong>. Nothing is mailed.<br><br>Non-US citizens must contact their local consulate for entry requirements.`, ['My passport expires soon', 'Non-US citizen docs', 'Something else']));
+      showTyping(1400, () => addBotMsg(`📄 Travel document requirements:<br><br><strong>For Mexico (Cancún, Cabo, Puerto Vallarta):</strong><br>✅ Valid US passport (6 months validity)<br>✅ Tourist card (FMM) — provided on your flight<br><br><strong>For Dominican Republic (Punta Cana):</strong><br>✅ Valid US passport<br>✅ E-ticket (included in your package)<br><br><strong>For Bahamas (Nassau, Bimini):</strong><br>✅ Valid US passport or passport card<br><br>All documents should be valid for <strong>6 months beyond</strong> your travel date.`, ['My passport expires soon', 'Other destination docs', 'Speak to a representative']));
     } else if (key === 'change') {
       conversationStep = 1;
-      showTyping(1300, () => addBotMsg(`🔄 Changes & cancellations — StudentCity's official policy:<br><br>• <strong>Deposits are non-refundable</strong> regardless of when you cancel<br>• <strong>Name/hotel/destination changes:</strong> Free before deposit; minimum <strong>$35 fee per person</strong> after deposit<br>• If flights have been issued, airline restrictions may also apply to name changes<br>• <strong>Cancellations:</strong> Fees increase the closer to your departure date<br>• <strong>Reservations can be transferred</strong> to another traveler (free before deposit, $35+ after)<br>• <strong>Travel insurance</strong> is strongly recommended — it can cover cancellations if your trip is paid in full<br><br>Can I help you with anything specific about your situation?`, ['Start a change request', 'Travel insurance info', 'Something else']));
+      showTyping(1300, () => addBotMsg(`🔄 Changes & cancellations — here's our policy:<br><br>• <strong>Name changes:</strong> Allowed up to 30 days before travel (fee may apply)<br>• <strong>Date changes:</strong> Subject to availability, contact a representative<br>• <strong>Cancellations 60+ days out:</strong> Deposit retained, balance refunded<br>• <strong>Cancellations under 60 days:</strong> No refund — travel insurance recommended<br><br>Want to start a change or cancellation request?`, ['Start a change request', 'Start a cancellation', 'Speak to a representative']));
     } else if (key === 'destinfo') {
       conversationStep = 'destinfo_pick';
       showTyping(1100, () => {
         addBotMsg(`🗺️ Which destination do you want to know more about?`);
         showDestinationList();
       });
-    } else if (key === 'pricing') {
-      conversationStep = 1;
-      showTyping(1200, () => addBotMsg(`💰 Here's a breakdown of StudentCity's pricing:<br><br><strong>Published prices:</strong><br>🏖️ <strong>Cancún:</strong> $799 Deluxe · $999 Super Deluxe · $1,179 Super Duper (all-inclusive)<br>🎉 <strong>Panama City Beach:</strong> From $299 (hotel + party card, not all-inclusive)<br>🐚 <strong>Nassau:</strong> From $1,199 (all-inclusive + open-bar party passes)<br><br><strong>Custom quote destinations:</strong><br>🌴 Punta Cana · 🌵 Cabo · 🌊 Puerto Vallarta · 🌞 Fort Lauderdale · 🏄 South Padre Island · ⚓ Bimini · 🌺 Saint Maarten<br><br>For a custom quote call <strong>1-888-777-4642</strong> or ask below and I can tell you what's included at any destination.`, ['Cancún packages', 'Panama City Beach', 'Nassau packages', 'Something else']));
-    } else if (key === 'insurance') {
-      conversationStep = 1;
-      showTyping(1100, () => addBotMsg(`🛡️ StudentCity strongly recommends <strong>Comprehensive Travel Insurance</strong>.<br><br>It can cover:<br>• Medical expenses abroad<br>• Trip cancellation (if your trip is paid in full)<br>• Trip delays<br>• Baggage delay or loss<br><br>Coverage becomes active only after <strong>full trip payment</strong>. Given that deposits are non-refundable, insurance is especially valuable if your plans might change.<br><br>Is there anything else I can help you with?`, ['Add insurance', 'Cancellation policy', 'Something else']));
-    } else if (key === 'baggage') {
-      conversationStep = 1;
-      showTyping(1000, () => addBotMsg(`🧳 Important baggage info:<br><br>• <strong>Checked luggage is NOT included</strong> in your StudentCity package<br>• You pay baggage fees directly to your airline at check-in — fees vary by carrier<br>• Check your airline's specific policy before you travel<br>• Carry-on policies also vary by airline<br><br>StudentCity uses airlines including American, United, JetBlue, Delta, Spirit, and private charters — check your confirmation for your specific airline.`, ['Flight info', 'Something else']));
     } else if (key === 'advisor') {
       conversationStep = 'collect_name';
-      showTyping(1000, () => addBotMsg(`No problem — I'll connect you with a StudentCity representative! 🙋<br><br>You can also reach us directly:<br>📞 <strong>1-888-777-4642</strong> (free call)<br><br>Or fill in your details below and we'll have someone follow up with you. First, what's your name?`));
+      showTyping(1000, () => addBotMsg(`No problem — I'll connect you with a StudentCity representative right away! 🙋<br><br>First, what's your name?`));
     }
   }
 
@@ -1383,7 +1102,7 @@
   function showDestinationInfo(dest) {
     conversationStep = 1;
     showTyping(1300, () => {
-      addBotMsg(`${dest.emoji} <strong>${dest.name}</strong><br><br>${dest.tiers}<br><br>🏨 <strong>Hotel:</strong> ${dest.hotel}<br>✅ <strong>Included:</strong> ${dest.included}<br><br>🌡️ Warm & sunny during spring break · 🛂 Passport required for international destinations · 🎒 Checked luggage NOT included in package price<br><br>Want to know more?`, ['Travel documents', 'What\'s included', 'Something else']);
+      addBotMsg(`${dest.emoji} <strong>${dest.name}</strong> is known for ${dest.vibe}.<br><br>Here's a quick overview:<br><br>🌡️ <strong>Weather:</strong> Warm and sunny, typically 28–34°C during spring break<br>🕐 <strong>Time zone:</strong> Check your confirmation for local time<br>🏥 <strong>Health:</strong> No vaccines required for US citizens, but travel insurance is strongly recommended<br>💊 <strong>Water:</strong> Drink bottled water only (applies to Mexico & DR)<br>📱 <strong>Mobile:</strong> Check international roaming with your carrier before you go<br><br>Want to know anything more specific?`, ['Travel documents needed', 'What to pack', 'Speak to a representative']);
     });
   }
 
@@ -1425,6 +1144,53 @@
           <div class="quick-reply" onclick="handleTopicClick('hotel')">🏨 Hotel info</div>
           <div class="quick-reply" onclick="handleTopicClick('docs')">📄 Travel docs</div>
           <div class="quick-reply" onclick="handleTopicClick('change')">🔄 Make a change</div>
+        </div>
+      </div>
+    `;
+    document.getElementById('chatMessages').appendChild(el);
+    scrollToBottom();
+    conversationStep = 1;
+  }
+
+  function showFlightCard() {
+    const dest = destinations[Math.floor(Math.random() * 3)];
+    const el = document.createElement('div');
+    el.classList.add('msg', 'bot');
+    el.innerHTML = `
+      <div class="msg-avatar">☀️</div>
+      <div style="max-width:92%">
+        <div class="msg-bubble" style="border-radius:16px 16px 16px 4px; max-width:100%">Found it, <strong>${firstName} ${lastName}</strong>! Here are your flight details ✈️</div>
+        <div class="hs-lead-card" style="margin-top:8px">
+          <div class="hs-lead-header">
+            <div class="hs-lead-icon">✈️</div>
+            <div>
+              <div class="hs-lead-title">Confirmation: ${flightConfirmNum}</div>
+              <div class="hs-lead-sub">${firstName} ${lastName} · Status: Confirmed ✅</div>
+            </div>
+          </div>
+          <div class="hs-field"><span>Passenger</span><span>${firstName} ${lastName}</span></div>
+          <div class="hs-field"><span>Destination</span><span>${dest.name}</span></div>
+          <div class="hs-field"><span>Outbound flight</span><span>AA1042 · Departs 08:15</span></div>
+          <div class="hs-field"><span>Return flight</span><span>AA1085 · Departs 16:40</span></div>
+          <div class="hs-field"><span>Travel dates</span><span>Mar 14 – Mar 21, 2026</span></div>
+          <div class="hs-field"><span>Check-in opens</span><span>24 hrs before departure</span></div>
+          <div class="hs-field"><span>Baggage</span><span>1 carry-on + 1 checked bag (23kg)</span></div>
+          <div class="hs-pipeline">
+            <div class="hs-pipeline-label">Flight status</div>
+            <div class="hs-stages">
+              <div class="hs-stage done"></div>
+              <div class="hs-stage done"></div>
+              <div class="hs-stage active"></div>
+              <div class="hs-stage"></div>
+            </div>
+            <div class="hs-stage-labels"><span>Booked</span><span>Confirmed</span><span>Pre-travel</span><span>Travelling</span></div>
+          </div>
+        </div>
+        <div class="quick-replies" style="margin-top:8px">
+          <div class="quick-reply" onclick="handleTopicClick('hotel')">🏨 Hotel info</div>
+          <div class="quick-reply" onclick="handleTopicClick('docs')">📄 Travel docs</div>
+          <div class="quick-reply" onclick="handleTopicClick('change')">🔄 Make a change</div>
+          <div class="quick-reply" onclick="handleTopicClick('advisor')">👤 Speak to someone</div>
         </div>
       </div>
     `;
@@ -1487,20 +1253,10 @@
     scrollToBottom();
   }
 
-  function addUserMsg(text, attachment) {
+  function addUserMsg(text) {
     const el = document.createElement('div');
     el.classList.add('msg', 'user');
-    let attachHtml = '';
-    if (attachment) {
-      if (attachment.type.startsWith('image/')) {
-        const url = URL.createObjectURL(attachment);
-        attachHtml = `<div class="msg-attachment"><img src="${url}" alt="${attachment.name}" /></div>`;
-      } else {
-        attachHtml = `<div class="msg-attachment"><div class="msg-attachment-file">📄 ${attachment.name}</div></div>`;
-      }
-    }
-    const bubbleHtml = text ? `<div class="msg-bubble">${text}</div>` : '';
-    el.innerHTML = `<div class="msg-avatar">👤</div><div>${bubbleHtml}${attachHtml}</div>`;
+    el.innerHTML = `<div class="msg-avatar">👤</div><div class="msg-bubble">${text}</div>`;
     document.getElementById('chatMessages').appendChild(el);
     scrollToBottom();
   }
@@ -1519,6 +1275,70 @@
     const msgs = document.getElementById('chatMessages');
     setTimeout(() => { msgs.scrollTop = msgs.scrollHeight; }, 50);
   }
+</script>
+
+<!-- Vapi Voice Agent -->
+<script type="module">
+  import Vapi from 'https://esm.sh/@vapi-ai/web';
+
+  const vapi = new Vapi("4ce8ff8c-88b1-4c5d-8687-a12014cc63f2");
+  let callActive = false;
+
+  const el = (id) => document.getElementById(id);
+
+  function setStatus(html) {
+    const s = el("chatHeaderStatus");
+    if (s) s.innerHTML = html;
+  }
+
+  vapi.on("call-start", () => {
+    callActive = true;
+    el("voiceBtn")?.classList.replace("connecting", "active") || el("voiceBtn")?.classList.add("active");
+    el("voiceActiveBar")?.classList.add("show");
+    setStatus('<div class="status-dot" style="background:var(--coral)"></div> Voice call active');
+    if (!chatOpen && typeof openChat === "function") openChat();
+  });
+
+  vapi.on("call-end", () => {
+    callActive = false;
+    el("voiceBtn")?.classList.remove("active", "connecting");
+    el("voiceActiveBar")?.classList.remove("show");
+    setStatus('<div class="status-dot"></div> Online · AI customer service');
+  });
+
+  vapi.on("speech-start", () => {
+    el("voiceLabel") && (el("voiceLabel").textContent = "Sunny is speaking...");
+    el("voiceWave")?.classList.remove("listening");
+  });
+
+  vapi.on("speech-end", () => {
+    el("voiceLabel") && (el("voiceLabel").textContent = "Listening...");
+    el("voiceWave")?.classList.add("listening");
+  });
+
+  vapi.on("error", (e) => {
+    console.error("Vapi error:", e);
+    window.endVoiceCall();
+  });
+
+  // Expose controls to window so onclick handlers can reach them
+  window.toggleVoice = () => callActive ? window.endVoiceCall() : window.startVoiceCall();
+
+  window.startVoiceCall = () => {
+    if (callActive) return;
+    el("voiceBtn")?.classList.add("connecting");
+    setStatus('<div class="status-dot" style="background:var(--sun)"></div> Connecting...');
+    vapi.start({ firstMessage: "Hi, I'm Sunny! What can I help you with today?" });
+    if (!chatOpen && typeof openChat === "function") openChat();
+  };
+
+  window.endVoiceCall = () => {
+    vapi.stop();
+    callActive = false;
+    el("voiceBtn")?.classList.remove("active", "connecting");
+    el("voiceActiveBar")?.classList.remove("show");
+    setStatus('<div class="status-dot"></div> Online · AI customer service');
+  };
 </script>
 
 </body>
